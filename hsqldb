@@ -1,0 +1,16 @@
+#!/bin/bash
+# default database name is **TEST**
+
+USER=root
+PASSWORD=
+DATA_PATH=/opt/databases/hsqldb/data
+CONTAINER=hsqldb-server
+
+docker rm -f $CONTAINER
+docker run -d -p 9001:9001 --name $CONTAINER \
+	--hostname hsqldb-server.dev \
+	-e "HSQLDB_USER=$USER" \
+	-e "HSQLDB_PASSWORD=$PASSWORD" \
+	-v $DATA_PATH:/opt/database \
+	defreitas/hsqldb
+#	blacklabelops/hsqldb
