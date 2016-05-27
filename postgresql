@@ -9,5 +9,5 @@ docker rm -f $CONTAINER
 docker run --name $CONTAINER --hostname postgresql-server.dev \
 	-e POSTGRES_PASSWORD=$PASSWORD \
 	-e POSTGRES_USER=$USER \
-	-v $DATA_VOLUME_FOLDER:/var/lib/postgresql/data \
-	-d postgres
+	-v $DATA_PATH:/var/lib/postgresql/data \
+	-d postgres:9.3

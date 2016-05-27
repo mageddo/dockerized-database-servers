@@ -8,6 +8,6 @@ CONTAINER=mysql-server
 docker rm -f $CONTAINER
 docker run --name $CONTAINER --hostname mysql-server.dev -p 3306:3306 \
         -e MYSQL_ROOT_PASSWORD=$PASSWORD -d \
-	-v $DATA_PATH:/var/lib/mysql mysql
+	-v $DATA_PATH:/var/lib/mysql mysql:5.7
 
 
