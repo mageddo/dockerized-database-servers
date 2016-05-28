@@ -1,0 +1,11 @@
+#!/bin/sh
+
+USER_NAME=root
+PASSWORD=root
+PHPMYADMIN_PORT=8888
+
+docker run --name phpmyadmin --hostname phpmyadmin.dev \
+	-p $PHPMYADMIN_PORT:80 -e MYSQL_USERNAME=$USER_NAME \
+	-d corbinu/docker-phpmyadmin
+
+# enjoy ;)
