@@ -1,0 +1,10 @@
+hello-world:
+  image: java:openjdk-8u91
+  hostname: "openjdk8.mageddo"
+  volumes:
+    - $PWD/build:/opt/spring
+  working_dir: /opt/spring/libs
+  command: java -Xmx8m -Xss256k -jar hello-world-1.0-SNAPSHOT.jar
+  mem_limit: 10m
+  memswap_limit: 0
+
