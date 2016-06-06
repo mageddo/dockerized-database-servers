@@ -1,5 +1,8 @@
 #!/bin/sh
 
+
+export USER_NAME=root
+
 docker rm -f phpmyadmin
 docker run --name phpmyadmin --hostname phpmyadmin.dev \
 	-e PMA_HOST=mysql-server.dev \
