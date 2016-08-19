@@ -12,4 +12,4 @@ services:
     hostname: "rabbitmq.dev.intranet"
     volumes:
       - /var/lib/rabbitmq:/var/lib/rabbitmq
-    network: bridge
+    network_mode: bridge
