@@ -1,8 +1,15 @@
-rabbitmq:
-  image: rabbitmq:3.6.1-management
-  ports:
-    - "15672:15672"
-    - "5672:5672"
-  hostname: "rabbitmq.dev.intranet"
-  volumes:
-    - /var/lib/rabbitmq:/var/lib/rabbitmq
+version: '2'
+services:
+  rabbitmq:
+    build:
+      context: .
+      dockerfile: rabbit-mq
+    image: mageddo/rabbitmq:3.6.1-management
+    container_name: rabbitmq-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    hostname: "rabbitmq.dev.intranet"
+    volumes:
+      - /var/lib/rabbitmq:/var/lib/rabbitmq
+    network: bridge
