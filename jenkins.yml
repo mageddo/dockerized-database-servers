@@ -7,3 +7,5 @@ services:
     volumes: 
       - /opt/jenkins_home:/var/jenkins_home
     network_mode: bridge
+    mem_limit: 500m
+    memswap_limit: 0
