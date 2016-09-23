@@ -9,3 +9,5 @@ services:
     network_mode: bridge
     mem_limit: 500m
     memswap_limit: 0
+
+# https://hub.docker.com/_/jenkins/
