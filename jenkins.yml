@@ -1,0 +1,9 @@
+version: '2'
+services:
+  jenkins:
+    image: jenkins:2.7.4
+    container_name: jenkins
+    hostname: "jenkins.dev"
+    volumes: 
+      - /opt/jenkins_home:/var/jenkins_home
+    network_mode: bridge
