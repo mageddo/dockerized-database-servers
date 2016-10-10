@@ -1,0 +1,8 @@
+version: '2'
+services:
+  sonar:
+    container_name: sonarqube
+    hostname: sonar.dev
+    image: sonarqube:6.0
+    network_mode: bridge
+
