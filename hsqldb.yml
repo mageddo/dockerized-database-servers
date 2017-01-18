@@ -1,0 +1,19 @@
+# default database name is **TEST**
+
+version: '2'
+services:
+  jenkins:
+    image: defreitas/hsqldb
+    container_name: hsqldb-server
+    hostname: "hsqldb-server.dev"
+    volumes: 
+      - /var/lib/hsqldb-data:/opt/database
+    network_mode: bridge
+    environment:
+      - HSQLDB_USER=root
+      - HSQLDB_PASSWORD=
+    ports:
+      - 9001:9001
+    mem_limit: 500m
+    memswap_limit: 0
+    privileged: true
