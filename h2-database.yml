@@ -1,0 +1,11 @@
+version: '2'
+services:
+  h2databse:
+    image: oscarfonts/h2:1.3.176
+    container_name: h2-databse
+    hostname: "h2.dev"
+    ports:
+      - 1521:1521
+      - 81:81
+    volumes:
+      - /opt/database/h2/data:/opt/h2-data
