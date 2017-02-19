@@ -4,7 +4,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.h2
-    image: mageddo/h2:1.4.192
+    image: mageddo/h2:1.4.193
     container_name: h2-databse
     hostname: "h2.dev"
     ports:
