@@ -12,4 +12,4 @@ services:
       - 9092:9092
     volumes:
       - /opt/databases/h2/data:/h2/data
-    network_mode: brige
+    network_mode: bridge
