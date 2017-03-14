@@ -3,7 +3,9 @@ postgresql:
   environment:
     - POSTGRES_PASSWORD=root
     - POSTGRES_USER=root
+    - POSTGRES_DB=root
   volumes:
     - /opt/databases/postgresql/data:/var/lib/postgresql/data
   container_name: postgresql-server
   hostname: postgresql-server.dev
+# url de conexao jdbc:postgresql://postgresql-server.dev:5432/root

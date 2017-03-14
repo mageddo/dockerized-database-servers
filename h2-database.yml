@@ -1,0 +1,15 @@
+version: '2'
+services:
+  h2databse:
+    build: 
+      context: .
+      dockerfile: Dockerfile.h2
+    image: mageddo/h2:1.4.193
+    container_name: h2-databse
+    hostname: "h2.dev"
+    ports:
+      - 8082:8082
+      - 9092:9092
+    volumes:
+      - /opt/databases/h2/data:/h2/data
+    network_mode: bridge
