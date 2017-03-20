@@ -7,7 +7,7 @@ services:
     hostname: activemq.dev
     network_mode: bridge
     volumes:
-      - /opt/queue/activemq:/data/activemq
+      - /opt/queue/activemq/data:/data/activemq
     environment:
       - ACTIVEMQ_ADMIN_LOGIN=admin
       - ACTIVEMQ_ADMIN_PASSWORD=admin
