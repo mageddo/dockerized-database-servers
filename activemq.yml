@@ -1,0 +1,18 @@
+# https://hub.docker.com/r/webcenter/activemq/
+version: '2'
+services:
+  activemq:
+    image: webcenter/activemq:5.14.3
+    container_name: activemq
+    hostname: activemq.dev
+    network_mode: bridge
+    volumes:
+      - /opt/queue/activemq:/data/activemq
+    environment:
+      - ACTIVEMQ_ADMIN_LOGIN=admin
+      - ACTIVEMQ_ADMIN_PASSWORD=admin
+      - ACTIVEMQ_USER_LOGIN=guest
+      - ACTIVEMQ_USER_PASSWORD=guest
+
+# web-console: 8161
+# broker: tcp://activemq.dev:61616
