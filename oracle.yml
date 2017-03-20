@@ -1,0 +1,16 @@
+version: '2'
+services:
+  oracle:
+    image: wnameless/oracle-xe-11g
+    container_name: oracle
+    hostname: oracle-server.dev
+    ports:
+      - 1521:1521
+      - 22:22
+    network_mode: bridge
+    environment:
+      - ORACLE_ALLOW_REMOTE=true
+# user: oracle
+# password: system
+# JDBC jdbc:oracle:thin:@oracle-server.dev:1521:xe
+# Oracle thin driver
