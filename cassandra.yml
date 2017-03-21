@@ -1,0 +1,14 @@
+# https://hub.docker.com/r/webcenter/activemq/
+version: '2'
+services:
+  cassandra:
+    image: cassandra:3
+    container_name: cassandra
+    hostname: cassandra.dev
+    network_mode: bridge
+    volumes:
+      - /opt/cassandra/data:/var/lib/cassandra
+
+# user: cassandra
+# password: cassandra
+# port: 9042
