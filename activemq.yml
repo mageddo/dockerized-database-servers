@@ -7,12 +7,13 @@ services:
     hostname: activemq.dev
     network_mode: bridge
     volumes:
-      - /opt/queue/activemq/data:/data/activemq
+      - /opt/queue/activemq/:/data/activemq
     environment:
       - ACTIVEMQ_ADMIN_LOGIN=admin
       - ACTIVEMQ_ADMIN_PASSWORD=admin
       - ACTIVEMQ_USER_LOGIN=guest
       - ACTIVEMQ_USER_PASSWORD=guest
+      - ACTIVEMQ_NAME=activemq.dev
 
 # web-console: 8161
 # broker: tcp://activemq.dev:61616
