@@ -1,0 +1,17 @@
+version: '2'
+services:
+  dev:
+    build:
+      context: .
+    image: reg.mageddo.com:5000/dev/php
+    container_name: php-server
+    hostname: php.dev
+    volumes:
+      - ./:/var/www/html
+      - /var/lib/mageddo/php:/var/lib/mysql
+    environment:
+      - DB_NAME=mydb
+      - DB_USER=root
+      - DB_PASS=root
+      - DB_HOST=php-mysql-server.dev
+    network_mode: bridge
