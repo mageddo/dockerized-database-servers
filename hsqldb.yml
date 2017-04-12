@@ -1,4 +1,5 @@
 # default database name is **TEST**
+# jdbc:hsqldb:hsql:hsqldb-server.dev:9001/testx2
 
 version: '2'
 services:
