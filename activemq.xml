@@ -34,6 +34,18 @@
           init-method="start" destroy-method="stop">
     </bean>
 
+    <bean id="postgres-ds" class="org.postgresql.ds.PGPoolingDataSource">
+        <property name="url" value="jdbc:postgresql://postgresql-server.dev:5432/root" />
+        <property name="user" value="root"/>
+        <property name="password" value="root"/>
+        <!-- <property name="databaseName" value="root"/>
+        <property name="portNumber" value="5432"/>-->
+        <!-- <property name="serverName" value="localhost"/> -->
+        <!-- <property name="dataSourceName" value="postgres"/> -->
+        <property name="initialConnections" value="1"/>
+        <property name="maxConnections" value="50"/>
+    </bean>
+
     <!--
         The <broker> element is used to configure the ActiveMQ broker.
     -->
@@ -78,9 +90,20 @@
 
             http://activemq.apache.org/persistence.html
         -->
-        <persistenceAdapter>
+        <!-- <persistenceAdapter>
             <kahaDB directory="${activemq.data}/kahadb"/>
+        </persistenceAdapter> -->
+        <persistenceAdapter>
+           <jdbcPersistenceAdapter dataDirectory="${activemq.data}" dataSource="#postgres-ds">
+             <statements >
+                <statements binaryDataType="bytea"/>
+             </statements >
+           </jdbcPersistenceAdapter>
+        
         </persistenceAdapter>
+        <!-- <persistenceAdapter>
+            <journaledJDBC journalLogFiles="5" dataDirectory="${activemq.data}/postgresql" dataSource="#postgres-ds"/>
+        </persistenceAdapter> -->
 
 
           <!--
@@ -91,7 +114,7 @@
           <systemUsage>
             <systemUsage>
                 <memoryUsage>
-                    <memoryUsage percentOfJvmHeap="70" />
+                    <memoryUsage limit="256 mb" />
                 </memoryUsage>
                 <storeUsage>
                     <storeUsage limit="100 gb"/>

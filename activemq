@@ -1,0 +1,2 @@
+FROM webcenter/activemq:5.14.3
+ADD activemqlib/ lib/

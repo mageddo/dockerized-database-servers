@@ -2,12 +2,17 @@
 version: '2'
 services:
   activemq:
-    image: webcenter/activemq:5.14.3
+    build: 
+      context: .
+      dockerfile: activemq
+    image: mageddo/activemq
     container_name: activemq
     hostname: activemq.dev
     network_mode: bridge
     volumes:
       - /opt/queue/activemq/:/data/activemq
+      - /var/log/activemq/:/var/log/activemq
+      - $PWD/activemq.xml:/opt/activemq/conf/activemq.xml
     environment:
       - ACTIVEMQ_ADMIN_LOGIN=admin
       - ACTIVEMQ_ADMIN_PASSWORD=admin
