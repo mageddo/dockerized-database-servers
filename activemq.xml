@@ -38,10 +38,6 @@
         <property name="url" value="jdbc:postgresql://postgresql-server.dev:5432/root" />
         <property name="user" value="root"/>
         <property name="password" value="root"/>
-        <!-- <property name="databaseName" value="root"/>
-        <property name="portNumber" value="5432"/>-->
-        <!-- <property name="serverName" value="localhost"/> -->
-        <!-- <property name="dataSourceName" value="postgres"/> -->
         <property name="initialConnections" value="1"/>
         <property name="maxConnections" value="50"/>
     </bean>
@@ -49,7 +45,7 @@
     <!--
         The <broker> element is used to configure the ActiveMQ broker.
     -->
-    <broker xmlns="http://activemq.apache.org/schema/core" brokerName="localhost" dataDirectory="${activemq.data}">
+    <broker xmlns="http://activemq.apache.org/schema/core" brokerName="broker1" dataDirectory="${activemq.data}">
 
         <destinationPolicy>
             <policyMap>
@@ -64,7 +60,7 @@
 
                     -->
                   <pendingMessageLimitStrategy>
-                    <constantPendingMessageLimitStrategy limit="1000"/>
+                    <constantPendingMessageLimitStrategy limit="10000"/>
                   </pendingMessageLimitStrategy>
                 </policyEntry>
               </policyEntries>
@@ -80,7 +76,7 @@
             http://activemq.apache.org/jmx.html
         -->
         <managementContext>
-            <managementContext createConnector="false"/>
+            <managementContext createConnector="true"/>
         </managementContext>
 
         <!--
@@ -90,21 +86,27 @@
 
             http://activemq.apache.org/persistence.html
         -->
-        <!-- <persistenceAdapter>
+<!--         <persistenceAdapter>
             <kahaDB directory="${activemq.data}/kahadb"/>
         </persistenceAdapter> -->
+
         <persistenceAdapter>
-           <jdbcPersistenceAdapter dataDirectory="${activemq.data}" dataSource="#postgres-ds">
+            <jdbcPersistenceAdapter dataDirectory="${activemq.data}" dataSource="#postgres-ds">
              <statements >
                 <statements binaryDataType="bytea"/>
              </statements >
            </jdbcPersistenceAdapter>
         
         </persistenceAdapter>
-        <!-- <persistenceAdapter>
+            
+       <!-- <persistenceAdapter>
             <journaledJDBC journalLogFiles="5" dataDirectory="${activemq.data}/postgresql" dataSource="#postgres-ds"/>
-        </persistenceAdapter> -->
+        </persistenceAdapter>-->
 
+<!--         <persistenceFactory>
+            <journalPersistenceAdapterFactory journalLogFiles="5" dataDirectory="${activemq.data}/postgresql" dataSource="#postgres-ds"/>
+        </persistenceFactory>
+ -->
 
           <!--
             The systemUsage controls the maximum amount of space the broker will
@@ -114,7 +116,7 @@
           <systemUsage>
             <systemUsage>
                 <memoryUsage>
-                    <memoryUsage limit="256 mb" />
+                    <memoryUsage limit="3 gb" />
                 </memoryUsage>
                 <storeUsage>
                     <storeUsage limit="100 gb"/>

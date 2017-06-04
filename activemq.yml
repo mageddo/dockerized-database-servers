@@ -20,5 +20,21 @@ services:
       - ACTIVEMQ_USER_PASSWORD=guest
       - ACTIVEMQ_NAME=activemq.dev
 
+  activemq-node-2:
+    extends: activemq
+    container_name: activemq-2
+    hostname: activemq-2.dev
+    volumes:
+      - /opt/queue/activemq-2/:/data/activemq
+      - /var/log/activemq-2/:/var/log/activemq
+
+  activemq-node-3:
+    extends: activemq
+    container_name: activemq-3
+    hostname: activemq-3.dev
+    volumes:
+      - /opt/queue/activemq-3/:/data/activemq
+      - /var/log/activemq-3/:/var/log/activemq
+
 # web-console: 8161
 # broker: tcp://activemq.dev:61616
