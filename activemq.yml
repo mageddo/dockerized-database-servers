@@ -20,13 +20,13 @@ services:
       - ACTIVEMQ_USER_PASSWORD=guest
       - ACTIVEMQ_NAME=activemq.dev
 
-  activemq-node-2:
+  activemq-2:
     extends: activemq
     container_name: activemq-2
-    hostname: activemq-2.dev
+    hostname: activemq.dev
     volumes:
-      - /opt/queue/activemq-2/:/data/activemq
-      - /var/log/activemq-2/:/var/log/activemq
+      - $PWD/activemq-kahab.xml:/opt/activemq/conf/activemq.xml
+      - ACTIVEMQ_NAME=activemq-2.dev
 
   activemq-node-3:
     extends: activemq
