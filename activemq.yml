@@ -26,6 +26,7 @@ services:
     hostname: activemq.dev
     volumes:
       - $PWD/activemq-kahab.xml:/opt/activemq/conf/activemq.xml
+    environment:
       - ACTIVEMQ_NAME=activemq-2.dev
 
   activemq-node-3:
