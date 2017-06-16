@@ -12,4 +12,4 @@ RUN mkdir -p $BASE_DIR && \
 	mkdir -p $CONF_DIR && \
 	curl -L http://central.maven.org/maven2/com/h2database/h2/$H2_VERSION/h2-$H2_VERSION.jar > /h2/h2.jar
 
-CMD bash -c "java -cp '/h2/h2.jar' org.h2.tools.Server -web -tcp -trace -webAllowOthers -tcpAllowOthers -webPort $WEB_PORT -tcpPort $TCP_PORT -baseDir $BASE_DIR -properties $CONF_DIR"
+CMD bash -c "java -Duser.timezone=America/Sao_Paulo -cp '/h2/h2.jar' org.h2.tools.Server -web -tcp -trace -webAllowOthers -tcpAllowOthers -webPort $WEB_PORT -tcpPort $TCP_PORT -baseDir $BASE_DIR -properties $CONF_DIR"
