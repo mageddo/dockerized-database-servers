@@ -20,5 +20,6 @@ services:
       dockerfile: kafka
     image: defreitas/kafka:0.10.2.1
     container_name: zookeeper
+    hostname: zookeeper.dev
     command: bin/zookeeper-server-start.sh config/zookeeper.properties
     network_mode: bridge
