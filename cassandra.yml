@@ -2,7 +2,10 @@
 version: '2'
 services:
   cassandra1:
-    image: cassandra:3.11
+    build: 
+      context: .
+      dockerfile: cassandra.Dockerfile
+    image: defreitas/cassandra:3.11
     container_name: cassandra1
     hostname: cassandra.dev
     # network_mode: bridge
@@ -12,7 +15,6 @@ services:
     volumes:
       - /var/lib/cassandra1:/var/lib/cassandra
       - ./cassandra/conf/cassandra-env.sh:/etc/cassandra/cassandra-env.sh
-      - ./cassandra/conf/cassandra.yaml:/etc/cassandra/cassandra.yaml
   # cassandra2:
   #   image: cassandra:3.11
   #   container_name: cassandra2
