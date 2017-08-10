@@ -1,14 +1,59 @@
 # https://hub.docker.com/_/cassandra
 version: '2'
 services:
-  cassandra:
-    image: cassandra:3
-    container_name: cassandra
+  cassandra1:
+    image: cassandra:3.11
+    container_name: cassandra1
     hostname: cassandra.dev
-    network_mode: bridge
+    # network_mode: bridge
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.4
     volumes:
-      - /opt/cassandra/data:/var/lib/cassandra
+      - /var/lib/cassandra1:/var/lib/cassandra
+      - ./cassandra/conf/cassandra-env.sh:/etc/cassandra/cassandra-env.sh
+  cassandra2:
+    image: cassandra:3.11
+    container_name: cassandra2
+    # network_mode: bridge
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.5
+    volumes:
+      - /var/lib/cassandra2:/var/lib/cassandra
+      - ./cassandra/conf/cassandra-env.sh:/etc/cassandra/cassandra-env.sh
+    # links:
+    #   - cassandra1
+    depends_on:
+      - cassandra1
+    environment:
+      # - CASSANDRA_SEEDS="$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' cassandra1)"
+      - CASSANDRA_SEEDS=10.5.0.4
+  cassandra3:
+    image: cassandra:3.11
+    container_name: cassandra3
+    # network_mode: bridge
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.6
+    volumes:
+      - /var/lib/cassandra3:/var/lib/cassandra
+      - ./cassandra/conf/cassandra-env.sh:/etc/cassandra/cassandra-env.sh
+    # links:
+    #   - cassandra2
+    depends_on:
+      - cassandra2
+    environment:
+      # - CASSANDRA_SEEDS="$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' cassandra2)"
+      - CASSANDRA_SEEDS=10.5.0.5
 
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1
 # user: cassandra
 # password: cassandra
 # port: 9042
