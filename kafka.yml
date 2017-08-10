@@ -23,3 +23,5 @@ services:
     hostname: zookeeper.dev
     command: bin/zookeeper-server-start.sh config/zookeeper.properties
     network_mode: bridge
+    volumes:
+      - $PWD/kafkaf/config/:/opt/kafka/config
