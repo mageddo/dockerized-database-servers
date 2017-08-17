@@ -1,9 +1,9 @@
 version: '2'
 services:
   ac_spark:
-    container_name: ac_spark
+    container_name: spark
     image: defreitas/spark_2.11:2.1.0
     build:
-      context: .
+      context: ./spark
     command: sleep 99999
 
