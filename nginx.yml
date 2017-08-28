@@ -1,14 +1,15 @@
 version: '2'
 services:
   nginx:
-    image: nginx:1.10
-    ports:
-      #- 80:80
+    image: nginx:1.12
+    # ports:
+      # - 80:80
       #- 443:443
     hostname: nginx.mageddo
     environment:
-      - HOSTNAMES=nginx.mageddo.com
+      - HOSTNAMES=acme.mageddo
     volumes:
-      - ./nginx/sites-enabled/:/etc/nginx/conf.d
-    container_name: mg-nginx
-    network_mode: 'bridge'
+      - ./nginx/certs/:/data/nginx/certs
+      - ./nginx/conf.d/:/etc/nginx/conf.d
+    container_name: nginx
+    network_mode: bridge
