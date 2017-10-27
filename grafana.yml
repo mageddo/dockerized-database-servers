@@ -1,6 +1,6 @@
 # docker run -d -p 3000:3000     -v /var/lib/grafana:/var/lib/grafana     -e "GF_SECURITY_ADMIN_PASSWORD=secret"     --name grafana grafana/grafana
 # it runs on 3000 port
-# user: 
+# user: admin
 # password: $GF_SECURITY_ADMIN_PASSWORD=secret
 
 version: '2'
@@ -13,3 +13,23 @@ services:
     hostname: grafana.dev
     volumes:
       - /var/lib/grafana:/var/lib/grafana
+    network_mode: bridge
+
+  # https://hub.docker.com/_/influxdb/
+  # 8086 HTTP API port
+  # 8083 Administrator interface port, if it is enabled
+  # 2003 Graphite support, if it is enabled
+  influxdb:
+    image: influxdb:1.2.4
+    hostname: influxdb.dev
+    container_name: influxdb
+    volumes:
+      - /var/lib/influxdb:/var/lib/influxdb
+    environment:
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=admin
+      - INFLUXDB_DB=database
+      - INFLUXDB_USER=dbuser
+      - INFLUXDB_USER_PASSWORD=dbuser
+      - INFLUXDB_ADMIN_ENABLED=true
+    network_mode: bridge
