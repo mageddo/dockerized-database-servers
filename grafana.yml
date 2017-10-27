@@ -1,0 +1,15 @@
+# docker run -d -p 3000:3000     -v /var/lib/grafana:/var/lib/grafana     -e "GF_SECURITY_ADMIN_PASSWORD=secret"     --name grafana grafana/grafana
+# roda na porta 3000
+# user: 
+# password: $GF_SECURITY_ADMIN_PASSWORD=secret
+
+version: '2'
+services:
+  grafana:
+    container_name: 'grafana'
+    image: grafana/grafana:4.6.0
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=secret
+    hostname: grafana.dev
+    volumes:
+      - /var/lib/grafana:/var/lib/grafana
