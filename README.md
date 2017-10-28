@@ -1,9 +1,1 @@
-Docker containers scripts ready for devlopment usage 
-
-# available images scripts
-- MYSQL SERVER
-- POSTGRESQL
-- HSQLDB
-
-# LICENSE
-Apache 2.0
+Docker containers scripts ready for devlopment usage. Most of this images use [DNS Proxy Server](https://github.com/mageddo/dns-proxy-server) to solve the containers hostnames from host and between containers

@@ -15,6 +15,7 @@ services:
       - /var/lib/grafana:/var/lib/grafana
     network_mode: bridge
 
+  # Influxdb is a datastore like eleastichsearch
   # https://hub.docker.com/_/influxdb/
   # 8086 HTTP API port
   # 8083 Administrator interface port, if it is enabled
@@ -32,4 +33,14 @@ services:
       - INFLUXDB_USER=dbuser
       - INFLUXDB_USER_PASSWORD=dbuser
       - INFLUXDB_ADMIN_ENABLED=true
+    network_mode: bridge
+
+  # Telegraf is a tool like logstash, it scan some input like a log file or a CPU and
+  # send it's information to someplace like influxdb, then it cn be used fro grafana, or for some log investigation
+  telegraf:
+    image: telegraf:1.3.5
+    hostname: telegraf.dev
+    container_name: telegraf
+    volumes:
+      - ./grafana/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
     network_mode: bridge
