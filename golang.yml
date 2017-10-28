@@ -1,0 +1,14 @@
+# find replace is your friend
+version: '2'
+services:
+  project:
+    container_name: project
+    image: golang:1.9.1
+    volumes:
+      - $PWD:/go/src/github.com/mageddo/project
+    working_dir: /go/src/github.com/mageddo/project
+    command: tail -f /dev/null
+  ci-build-test:
+    extends: project
+    container_name: ci-build-test
+    command: go test -v -run . -bench . github.com/mageddo/project/...
