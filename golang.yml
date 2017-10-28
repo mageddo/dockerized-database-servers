@@ -1,14 +1,11 @@
-# find replace is your friend
+# docker-compose -f golang.yml up -d && docker exec -it golang-compiler bash
 version: '2'
 services:
-  project:
-    container_name: project
+  # a go runner and compiler from native docker image (it is based on ubuntu image and comes with curl, ping, wget)
+  go-compiler:
+    container_name: go-compiler
     image: golang:1.9.1
     volumes:
       - $PWD:/go/src/github.com/mageddo/project
     working_dir: /go/src/github.com/mageddo/project
     command: tail -f /dev/null
-  ci-build-test:
-    extends: project
-    container_name: ci-build-test
-    command: go test -v -run . -bench . github.com/mageddo/project/...
