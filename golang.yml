@@ -9,3 +9,4 @@ services:
       - $PWD:/go/src/github.com/mageddo/project
     working_dir: /go/src/github.com/mageddo/project
     command: tail -f /dev/null
+    network_mode: bridge
