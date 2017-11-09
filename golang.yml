@@ -1,11 +1,13 @@
-# docker-compose -f golang.yml up -d && docker exec -it golang-compiler bash
+# docker-compose -f golang.yml up -d && docker exec -it go-compiler bash
 version: '2'
 services:
   # a go runner and compiler from native docker image (it is based on ubuntu image and comes with curl, ping, wget)
   go-compiler:
     container_name: go-compiler
     image: golang:1.9.1
+    hostname: go-compiler.dev
     volumes:
       - $PWD:/go/src/github.com/mageddo/project
     working_dir: /go/src/github.com/mageddo/project
     command: tail -f /dev/null
+    network_mode: bridge
