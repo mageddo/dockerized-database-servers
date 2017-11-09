@@ -12,7 +12,7 @@ services:
     mem_limit: 2048m
     volumes:
       - /data/es1/data:/usr/share/elasticsearch/data # it needs permission for others like (777) for tests
-      #- elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - 9200:9200
       - 9300:9300
