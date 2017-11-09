@@ -23,8 +23,6 @@ services:
   kibana:
     image: docker.elastic.co/kibana/kibana:5.6.4
     hostname: kibana.dev
-    environment:
-      - ELASTICSEARCH_URL=elasticsearch.dev:9200
     volumes:
       - ./elasticsearch/config/kibana.yml:/usr/share/kibana/config/kibana.yml
     network_mode: bridge
