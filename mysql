@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# jdbc:mysql://mysql-server.dev:3306/
+
 USER_NAME=root
 PASSWORD=root
 DATA_PATH=/opt/databases/mysql/data
