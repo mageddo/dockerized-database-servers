@@ -1,6 +1,10 @@
 #!/bin/bash
 
+## jdbc URL
 # jdbc:mysql://mysql-server.dev:3306/
+
+## from  terminal
+# mysql -h127.0.0.1 -u root --password=root 
 
 USER_NAME=root
 PASSWORD=root
