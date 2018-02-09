@@ -13,7 +13,8 @@ services:
     network_mode: bridge
     hostname: kafka.dev
     volumes:
-      - $PWD/kafkaf/config/:/opt/kafka/config
+      - ./kafkaf/config/:/opt/kafka/config
+
   zookeeper:
     build: 
       context: .
@@ -24,4 +25,13 @@ services:
     command: bin/zookeeper-server-start.sh config/zookeeper.properties
     network_mode: bridge
     volumes:
-      - $PWD/kafkaf/config/:/opt/kafka/config
+      - ./kafkaf/config/:/opt/kafka/config
+
+  kafka-manager:
+    image: sheepkiller/kafka-manager
+    ports:
+      - 9000:9000
+    environment:
+      - ZK_HOSTS=zookeeper.dev:2181
+      - APPLICATION_SECRET=admin
+    network_mode: bridge
