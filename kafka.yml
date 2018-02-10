@@ -14,6 +14,7 @@ services:
     hostname: kafka.dev
     volumes:
       - ./kafkaf/config/:/opt/kafka/config
+      - /opt/databases/kafka/logs/:/opt/kafka/logs/
 
   zookeeper:
     build: 
@@ -26,4 +27,5 @@ services:
     network_mode: bridge
     volumes:
       - ./kafkaf/config/:/opt/kafka/config
+      - /opt/databases/zookeeper/logs/:/opt/kafka/logs/
 
