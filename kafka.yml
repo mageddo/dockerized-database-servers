@@ -27,11 +27,3 @@ services:
     volumes:
       - ./kafkaf/config/:/opt/kafka/config
 
-  kafka-manager:
-    image: sheepkiller/kafka-manager
-    ports:
-      - 9000:9000
-    environment:
-      - ZK_HOSTS=zookeeper.dev:2181
-      - APPLICATION_SECRET=admin
-    network_mode: bridge
