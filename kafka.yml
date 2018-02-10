@@ -12,6 +12,8 @@ services:
     command: bin/kafka-server-start.sh config/server.properties
     network_mode: bridge
     hostname: kafka.dev
+    mem_limit: 2048m
+    memswap_limit: 0
     volumes:
       - ./kafkaf/config/:/opt/kafka/config
       - /opt/databases/kafka/logs/:/opt/kafka/logs/
@@ -25,6 +27,8 @@ services:
     hostname: zookeeper.dev
     command: bin/zookeeper-server-start.sh config/zookeeper.properties
     network_mode: bridge
+    mem_limit: 1024m
+    memswap_limit: 0
     volumes:
       - ./kafkaf/config/:/opt/kafka/config
       - /opt/databases/zookeeper/logs/:/opt/kafka/logs/
