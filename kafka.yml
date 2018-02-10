@@ -5,7 +5,7 @@ services:
     build: 
       context: .
       dockerfile: kafka
-    image: defreitas/kafka:0.10.2.1
+    image: defreitas/kafka:1.0.0
     container_name: kafka
     links:
       - zookeeper
@@ -19,7 +19,7 @@ services:
     build: 
       context: .
       dockerfile: kafka
-    image: defreitas/kafka:0.10.2.1
+    image: defreitas/kafka:1.0.0
     container_name: zookeeper
     hostname: zookeeper.dev
     command: bin/zookeeper-server-start.sh config/zookeeper.properties
