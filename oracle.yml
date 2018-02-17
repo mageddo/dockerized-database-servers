@@ -10,7 +10,7 @@ services:
     network_mode: bridge
     environment:
       - ORACLE_ALLOW_REMOTE=true
-# user: oracle
-# password: system
+# user: system
+# password: oracle
 # JDBC jdbc:oracle:thin:@oracle-server.dev:1521:xe
 # Oracle thin driver
