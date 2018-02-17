@@ -4,7 +4,7 @@ services:
   kafka:
     build: 
       context: .
-      dockerfile: kafka
+      dockerfile: kafka.Dockerfile
     image: defreitas/kafka:1.0.0
     container_name: kafka
     links:
@@ -15,13 +15,13 @@ services:
     mem_limit: 2048m
     memswap_limit: 0
     volumes:
-      - ./kafkaf/config/:/opt/kafka/config
+      - ./kafka/config/:/opt/kafka/config
       - /opt/databases/kafka/logs/:/opt/kafka/logs/
 
   zookeeper:
     build: 
       context: .
-      dockerfile: kafka
+      dockerfile: kafka.Dockerfile
     image: defreitas/kafka:1.0.0
     container_name: zookeeper
     hostname: zookeeper.dev
@@ -30,6 +30,6 @@ services:
     mem_limit: 1024m
     memswap_limit: 0
     volumes:
-      - ./kafkaf/config/:/opt/kafka/config
+      - ./kafka/config/:/opt/kafka/config
       - /opt/databases/zookeeper/logs/:/opt/kafka/logs/
 
