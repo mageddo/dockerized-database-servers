@@ -1,15 +1,12 @@
 # https://hub.docker.com/r/wurstmeister/kafka/tags/
-version: '2'
+version: '2.2'
 services:
-  kafka:
+  kafka-zookeeper:
     build: 
       context: .
       dockerfile: kafka.Dockerfile
     image: defreitas/kafka:1.0.0
     container_name: kafka
-    links:
-      - zookeeper
-    command: bin/kafka-server-start.sh config/server.properties
     network_mode: bridge
     hostname: kafka.dev
     mem_limit: 2048m
@@ -17,19 +14,9 @@ services:
     volumes:
       - ./kafka/config/:/opt/kafka/config
       - /opt/databases/kafka/logs/:/opt/kafka/logs/
-
-  zookeeper:
-    build: 
-      context: .
-      dockerfile: kafka.Dockerfile
-    image: defreitas/kafka:1.0.0
-    container_name: zookeeper
-    hostname: zookeeper.dev
-    command: bin/zookeeper-server-start.sh config/zookeeper.properties
-    network_mode: bridge
-    mem_limit: 1024m
-    memswap_limit: 0
-    volumes:
-      - ./kafka/config/:/opt/kafka/config
-      - /opt/databases/zookeeper/logs/:/opt/kafka/logs/
-
+    healthcheck:
+      test: [CMD, "echo", "0"]
+      interval: 3s
+#      interval: 1m30s
+      timeout: 10s
+      retries: 3
