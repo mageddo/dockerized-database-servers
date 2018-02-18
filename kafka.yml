@@ -13,7 +13,7 @@ services:
     memswap_limit: 0
     volumes:
       - ./kafka/config/:/opt/kafka/config
-      - /opt/databases/kafka/logs/:/opt/kafka/logs/
+      - /opt/databases/kafka/logs/:/tmp/kafka-logs
     healthcheck:
       test: [CMD, "echo", "0"]
       interval: 3s
