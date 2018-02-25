@@ -20,10 +20,12 @@ services:
       timeout: 10s
       retries: 3
   kafka-stg:
+    container_name: stg-kafka
     extends: kafka-zookeeper
     volumes:
       - /opt/databases/kafka-stg/logs/:/tmp/kafka-logs
   kafka-prod:
+    container_name: prod-kafka
     extends: kafka-zookeeper
     volumes:
       - /opt/databases/kafka-prod/logs/:/tmp/kafka-logs
