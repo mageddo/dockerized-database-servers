@@ -24,16 +24,17 @@ services:
       - 2181:2181
     environment:
       - HOSTNAMES=kafka.intranet
-      #- JMX_PORT=9999
   stg-kafka:
     container_name: stg-kafka
-    depends_on: kafka-manager
+    depends_on: 
+      - kafka-manager
     extends: kafka-zookeeper
     volumes:
       - /opt/databases/kafka-stg/logs/:/tmp/kafka-logs
   prod-kafka:
     container_name: prod-kafka
-    depends_on: kafka-manager
+    depends_on: 
+      - kafka-manager
     extends: kafka-zookeeper
     volumes:
       - /opt/databases/kafka-prod/logs/:/tmp/kafka-logs
@@ -43,7 +44,7 @@ services:
     image: sheepkiller/kafka-manager
     ports:
       - 9000:9000
-      environment:
-        - ZK_HOSTS=kafka.intranet:2181
-        - APPLICATION_SECRET=admin
+    environment:
+      - ZK_HOSTS=kafka.intranet:2181
+      - APPLICATION_SECRET=admin
     hostname: kafka-manager.dev
