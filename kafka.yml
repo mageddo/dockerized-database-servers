@@ -48,3 +48,4 @@ services:
       - ZK_HOSTS=kafka.intranet:2181
       - APPLICATION_SECRET=admin
     hostname: kafka-manager.dev
+    network_mode: bridge
