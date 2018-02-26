@@ -34,7 +34,7 @@ services:
     extends: kafka-zookeeper
     volumes:
       - /opt/databases/stg/kafka/logs/:/tmp/kafka-logs
-      - /opt/databases/stg/kafka/logs/:/tmp/zookeeper
+      - /opt/databases/stg/zookeeper/logs/:/tmp/zookeeper
   prod-kafka:
     container_name: prod-kafka
     depends_on: 
@@ -42,7 +42,7 @@ services:
     extends: kafka-zookeeper
     volumes:
       - /opt/databases/prod/kafka/logs/:/tmp/kafka-logs
-      - /opt/databases/prod/kafka/logs/:/tmp/zookeeper
+      - /opt/databases/prod/zookeeper/logs/:/tmp/zookeeper
     hostname: kafka.prod
 
   kafka-manager:
