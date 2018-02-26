@@ -1,40 +1,5 @@
-# https://hub.docker.com/r/wurstmeister/kafka/tags/
-version: '2.2'
+version: '2'
 services:
-  kafka-zookeeper:
-    build: 
-      context: .
-      dockerfile: kafka.Dockerfile
-    image: defreitas/kafka:1.0.0
-    container_name: kafka
-    network_mode: bridge
-    hostname: kafka.dev
-    mem_limit: 2048m
-    memswap_limit: 0
-    volumes:
-      - ./kafka/config/:/opt/kafka/config
-    healthcheck:
-      test: [CMD, "echo", "0"]
-      interval: 3s
-#      interval: 1m30s
-      timeout: 10s
-      retries: 3
-    ports:
-      - 9092:9092
-      - 2181:2181
-    environment:
-      - HOSTNAMES=kafka.intranet
-  kafka-stg:
-    container_name: stg-kafka
-    extends: kafka-zookeeper
-    volumes:
-      - /opt/databases/kafka-stg/logs/:/tmp/kafka-logs
-  kafka-prod:
-    container_name: prod-kafka
-    extends: kafka-zookeeper
-    volumes:
-      - /opt/databases/kafka-prod/logs/:/tmp/kafka-logs
-    hostname: kafka.prod
   lenses:
     image: landoop/lenses
     environment:
@@ -58,4 +23,5 @@ services:
       - 9991:9991
     volumes:
       - ./license.json:/license.json
+    # This is only need in some cases, where you run docker on a server that also hosts a service from the Kafka cluster
     network_mode: bridge
