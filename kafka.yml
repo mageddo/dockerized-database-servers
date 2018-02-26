@@ -24,7 +24,7 @@ services:
       - 2181:2181
     environment:
       - HOSTNAMES=kafka.intranet
-      - JMX_PORT=9999
+      #- JMX_PORT=9999
   kafka-stg:
     container_name: stg-kafka
     extends: kafka-zookeeper
