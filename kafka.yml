@@ -22,6 +22,8 @@ services:
     ports:
       - 9092:9092
       - 2181:2181
+    environment:
+      - HOSTNAMES=kafka.intranet
   kafka-stg:
     container_name: stg-kafka
     extends: kafka-zookeeper
