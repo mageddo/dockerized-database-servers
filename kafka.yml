@@ -42,7 +42,7 @@ services:
     #  - kafka-manager
     extends: kafka-zookeeper
     volumes:
-      - /opt/databases/stg/logging:/opt/kafka/logs/
+      - /opt/databases/prod/logging:/opt/kafka/logs/
       - /opt/databases/prod/kafka/logs/:/tmp/kafka-logs
       - /opt/databases/prod/zookeeper/logs/:/tmp/zookeeper
     hostname: kafka.prod
