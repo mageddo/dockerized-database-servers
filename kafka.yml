@@ -29,8 +29,8 @@ services:
       - HOSTNAMES=kafka.intranet
   stg-kafka:
     container_name: stg-kafka
-    depends_on: 
-      - kafka-manager
+    #depends_on: 
+    #  - kafka-manager
     extends: kafka-zookeeper
     volumes:
       - /opt/databases/stg/logging:/opt/kafka/logs/
@@ -38,8 +38,8 @@ services:
       - /opt/databases/stg/zookeeper/logs/:/tmp/zookeeper
   prod-kafka:
     container_name: prod-kafka
-    depends_on: 
-      - kafka-manager
+    #depends_on: 
+    #  - kafka-manager
     extends: kafka-zookeeper
     volumes:
       - /opt/databases/stg/logging:/opt/kafka/logs/
