@@ -22,39 +22,50 @@ services:
 #      interval: 1m30s
       timeout: 10s
       retries: 3
-    ports:
-      - 9092:9092
-      - 2181:2181
     environment:
-      - HOSTNAMES=kafka.intranet
+      - HOSTNAMES=kafka.intranet,zookeeper.intranet
+
   stg-kafka:
-    container_name: stg-kafka
-    #depends_on: 
-    #  - kafka-manager
     extends: kafka-zookeeper
+    container_name: stg-kafka
+    hostname: stg-kafka-1.intranet
+    # depends_on:
+    #   - stg-kafka-2
     volumes:
-      - /opt/databases/stg/logging:/opt/kafka/logs/
+      - /opt/databases/stg//kafka/logging:/opt/kafka/logs/
       - /opt/databases/stg/kafka/logs/:/tmp/kafka-logs
       - /opt/databases/stg/zookeeper/logs/:/tmp/zookeeper
-  prod-kafka:
-    container_name: prod-kafka
-    #depends_on: 
-    #  - kafka-manager
+
+  stg-kafka-2:
     extends: kafka-zookeeper
+    environment:
+      - HOSTNAMES=kafka-2.intranet
+      - JMX_PORT=10001
+    hostname: stg-kafka-2.intranet
+    container_name: stg-kafka-2.intranet
     volumes:
-      - /opt/databases/prod/logging:/opt/kafka/logs/
+      - ./kafka/supervisord-kafka-2.conf:/etc/supervisor/conf.d/supervisord.conf
+      - /opt/databases/stg/kafka-2/logging:/opt/kafka/logs/
+      - /opt/databases/stg/kafka-2/logs/:/tmp/kafka-logs
+    
+
+  prod-kafka:
+    extends: kafka-zookeeper
+    container_name: prod-kafka
+    volumes:
+      - /opt/databases/prod/kafka/logging:/opt/kafka/logs/
       - /opt/databases/prod/kafka/logs/:/tmp/kafka-logs
       - /opt/databases/prod/zookeeper/logs/:/tmp/zookeeper
     hostname: kafka.prod
 
-  kafka-manager:
-    image: sheepkiller/kafka-manager
-    ports:
-      - 9000:9000
-    environment:
-      - ZK_HOSTS=kafka.intranet:2181
-      - APPLICATION_SECRET=admin
-    hostname: kafka-manager.dev
-    mem_limit: 500m
-    memswap_limit: 0
-    network_mode: bridge
+  # kafka-manager:
+  #   image: sheepkiller/kafka-manager
+  #   ports:
+  #     - 9000:9000
+  #   environment:
+  #     - ZK_HOSTS=kafka.intranet:2181
+  #     - APPLICATION_SECRET=admin
+  #   hostname: kafka-manager.dev
+  #   mem_limit: 500m
+  #   memswap_limit: 0
+  #   network_mode: bridge
