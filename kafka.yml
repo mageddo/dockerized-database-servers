@@ -12,7 +12,7 @@ services:
     container_name: kafka
     network_mode: bridge
     hostname: kafka.dev
-    mem_limit: 1500m
+    mem_limit: 1024m
     memswap_limit: 0
     volumes:
       - ./kafka/config/:/opt/kafka/config
