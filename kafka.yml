@@ -42,7 +42,7 @@ services:
       - HOSTNAMES=kafka-2.intranet
       - JMX_PORT=10001
     hostname: stg-kafka-2.intranet
-    container_name: stg-kafka-2.intranet
+    container_name: stg-kafka-2
     volumes:
       - ./kafka/supervisord-kafka-2.conf:/etc/supervisor/conf.d/supervisord.conf
       - /opt/databases/stg/kafka-2/logging:/opt/kafka/logs/
