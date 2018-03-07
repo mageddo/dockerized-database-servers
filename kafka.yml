@@ -1,7 +1,7 @@
 # https://hub.docker.com/r/wurstmeister/kafka/tags/
 # 9999 - JMX zookeeper
 # 9998 - JMX kafka
-# 
+# docker-compose -f kafka.yml up -d stg-kafka stg-kafka-2
 version: '2.2'
 services:
   kafka-zookeeper:
