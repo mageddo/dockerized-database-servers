@@ -19,7 +19,7 @@ services:
       - POSTGRES_DB=db
     volumes:
       - /opt/databases/prod/postgresql/10.3/data:/var/lib/postgresql/data
-    container_name: stg-postgres
+    container_name: prod-postgres
     hostname: postgresql-server.prod
 
 # url de conexao jdbc:postgresql://postgresql-server.dev:5432/root
