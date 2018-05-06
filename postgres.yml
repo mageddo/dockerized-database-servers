@@ -1,4 +1,4 @@
-version: '2'
+version: '2.2'
 services:
   stg-postgres:
     image: postgres:10.3
@@ -10,6 +10,9 @@ services:
       - /opt/databases/stg/postgresql/10.3/data:/var/lib/postgresql/data
     container_name: stg-postgres
     hostname: postgresql-server.dev
+    mem_limit: 1024m
+    memswap_limit: 0
+    cpu_count: 1
 
   prod-postgres:
     image: postgres:10.3
