@@ -1,20 +1,31 @@
 version: '3'
 services:
   gluster-0:
+    image: defreitas/gluster
     build:
       context: .
       dockerfile: gluster.Dockerfile
-    command: sudo gluster peer probe gluster-1; tail -f /var/log/glusterfs/nfs.log
-    networks:
-      - mageddo
+    hostname: gluster-0.dev
+    environment: 
+      - SERVER=gluster-1.dev
+    # networks:
+    #   - host
+    #   - mageddo
+    network_mode: bridge
 
   gluster-1:
+    image: defreitas/gluster
     build:
       context: .
       dockerfile: gluster.Dockerfile
-    command: sudo gluster peer probe gluster-0; tail -f /var/log/glusterfs/nfs.log
-    networks:
-      - mageddo
+    hostname: gluster-1.dev
+    environment: 
+      - SERVER=gluster-0.dev
+    command: bash -c 'glusterd --no-daemon'
+    # networks:
+    #   - host
+    #   - mageddo
+    network_mode: bridge
 
 networks:
   mageddo:
