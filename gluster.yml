@@ -9,9 +9,11 @@ services:
     environment: 
       - SERVER=gluster-1.dev
     # networks:
-    #   - host
     #   - mageddo
     network_mode: bridge
+    volumes:
+      - /var/lib/mageddo/gluster/default:/var/lib/mageddo/gluster/default
+    privileged: true
 
   gluster-1:
     image: defreitas/gluster
@@ -21,11 +23,12 @@ services:
     hostname: gluster-1.dev
     environment: 
       - SERVER=gluster-0.dev
-    command: bash -c 'glusterd --no-daemon'
     # networks:
-    #   - host
     #   - mageddo
     network_mode: bridge
+    volumes:
+      - /var/lib/mageddo/gluster/default:/var/lib/mageddo/gluster/default
+    privileged: true
 
 networks:
   mageddo:
