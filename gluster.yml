@@ -1,0 +1,13 @@
+version: '3'
+services:
+  gluster-0:
+    build:
+      context: .
+      dockerfile: gluster.Dockerfile
+    command: sudo gluster peer probe gluster-1; tail -f /var/log/glusterfs/nfs.log
+
+  gluster-1:
+    build:
+      context: .
+      dockerfile: gluster.Dockerfile
+    command: sudo gluster peer probe gluster-0; tail -f /var/log/glusterfs/nfs.log
