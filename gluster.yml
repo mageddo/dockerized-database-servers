@@ -12,7 +12,7 @@ services:
     #   - mageddo
     network_mode: bridge
     volumes:
-      - /var/lib/mageddo/gluster/default:/var/lib/mageddo/gluster/default
+      - /var/lib/mageddo/gluster-0:/data
     privileged: true
 
   gluster-1:
@@ -27,7 +27,7 @@ services:
     #   - mageddo
     network_mode: bridge
     volumes:
-      - /var/lib/mageddo/gluster/default:/var/lib/mageddo/gluster/default
+      - /var/lib/mageddo/gluster-1:/data
     privileged: true
 
 networks:
