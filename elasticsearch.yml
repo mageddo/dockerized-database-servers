@@ -4,26 +4,26 @@
 # For dns names resolution: https://github.com/mageddo/dns-proxy-server
 version: '2'
 services:
-  elasticsearch1:
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.4
-    container_name: elasticsearch1
+  elasticsearch-01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
+    container_name: elasticsearch-01
     environment:
       # - cluster.name=docker-cluster
       # - bootstrap.memory_lock=true
       - discovery.type=single-node
     volumes:
-      - /data/es1/data:/usr/share/elasticsearch/data # it needs permission for others like (777) for tests
+      - /opt/databases/stg/elasticsearch-01:/usr/share/elasticsearch/data # it needs permission for others like (777) for tests
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - 9200:9200
       - 9300:9300
-    hostname: elasticsearch.dev
+    hostname: elasticsearch.docker
     mem_limit: 2048m
     network_mode: bridge
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:5.6.4
-    hostname: kibana.dev
+    image: docker.elastic.co/kibana/kibana:6.2.4
+    hostname: kibana.docker
     volumes:
       - ./elasticsearch/config/kibana.yml:/usr/share/kibana/config/kibana.yml
     network_mode: bridge
