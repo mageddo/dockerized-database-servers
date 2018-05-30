@@ -1,13 +1,10 @@
-version: '2'
+version: '3.6'
 services:
   jenkins:
-    image: jenkins:2.7.4
-    container_name: jenkins
-    hostname: "jenkins.dev"
-    volumes: 
-      - /opt/jenkins_home:/var/jenkins_home
-    network_mode: bridge
-    mem_limit: 500m
-    memswap_limit: 0
+    image: defreitas/jenkins:lts
+    build:
+      context: .
+    volumes:
+      - /var/lib/mageddo/data/jenkins/:/var/jenkins_home/
+      - /var/run/docker.sock:/var/run/docker.sock
 
-# https://hub.docker.com/_/jenkins/
