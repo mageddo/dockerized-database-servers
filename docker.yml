@@ -1,0 +1,10 @@
+version: '3'
+services:
+  docker:
+    build:
+      context: .
+      dockerfile: docker.Dockerfile
+    image: defreitas/docker:18.03.1-ce
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    
