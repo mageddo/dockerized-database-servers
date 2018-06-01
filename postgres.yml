@@ -8,6 +8,7 @@ services:
       - POSTGRES_DB=db
     volumes:
       - /opt/databases/stg/postgresql/10.3/data:/var/lib/postgresql/data
+      - /var/lib/mageddo/bkp/:/var/lib/mageddo/bkp/
     container_name: stg-postgres
     hostname: postgresql-server.dev
     mem_limit: 1024m
