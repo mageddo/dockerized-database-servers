@@ -1,0 +1,7 @@
+version: '3'
+services:
+  crontab:
+    image: defreitas/crontab
+    build:
+      context: .
+      dockerfile: crontab.Dockerfile
