@@ -4,6 +4,7 @@ services:
     image: defreitas/jenkins:lts
     build:
       context: .
+      dockerfile: jenkins.Dockerfile
     volumes:
       - /var/lib/mageddo/data/jenkins/:/var/jenkins_home/
       - /var/run/docker.sock:/var/run/docker.sock
