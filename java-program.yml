@@ -1,5 +1,6 @@
 hello-world:
-  image: java:openjdk-8u91
+  #image: java:openjdk-8u91 # deprecated
+  image: openjdk:8-jdk # ou openjdk:8-jre
   hostname: "openjdk8.mageddo"
   volumes:
     - $PWD/build:/opt/spring
