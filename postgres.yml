@@ -25,6 +25,7 @@ services:
       - POSTGRES_DB=db
     volumes:
       - /opt/databases/prod/postgresql/10.3/data:/var/lib/postgresql/data
+      - /var/lib/mageddo/bkp/postgres/:/var/lib/mageddo/bkp/postgres/
     container_name: prod-postgres
     hostname: postgresql-server.prod
 
@@ -41,5 +42,20 @@ services:
       - ./postgres/certs/server.key:/var/lib/postgresql/data/server.key
       - ./postgres/certs/server.crt:/var/lib/postgresql/data/server.crt
     hostname: ssl-postgresql-server.docker
+
+  stg-postgres-11:
+    image: postgres:11
+    environment:
+      - TZ=UTC
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=db
+    volumes:
+      - /opt/databases/stg/postgresql/11/data:/var/lib/postgresql/data
+    container_name: stg-postgres-11
+    hostname: postgresql-server-11.dev
+    mem_limit: 1024m
+    memswap_limit: 0
+    cpu_count: 1
 
 # url de conexao jdbc:postgresql://postgresql-server.dev:5432/root
