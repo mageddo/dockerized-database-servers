@@ -7,11 +7,13 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=root
       - POSTGRES_DB=db
+      - HOSTNAMES=postgres
     volumes:
       - /opt/databases/stg/postgresql/10.3/data:/var/lib/postgresql/data
       - /var/lib/mageddo/bkp/:/var/lib/mageddo/bkp/
     container_name: stg-postgres
     hostname: postgresql-server.dev
+    network_mode: bridge
     mem_limit: 1024m
     memswap_limit: 0
     cpu_count: 1
