@@ -10,7 +10,7 @@ services:
       - HOSTNAMES=postgres
     volumes:
       - /opt/databases/stg/postgresql/10.3/data:/var/lib/postgresql/data
-      - /var/lib/mageddo/bkp/:/var/lib/mageddo/bkp/
+      - /var/lib/mageddo:/var/lib/mageddo
     container_name: stg-postgres
     hostname: postgresql-server.dev
     network_mode: bridge
@@ -27,7 +27,7 @@ services:
       - POSTGRES_DB=db
     volumes:
       - /opt/databases/prod/postgresql/10.3/data:/var/lib/postgresql/data
-      - /var/lib/mageddo/bkp/postgres/:/var/lib/mageddo/bkp/postgres/
+      - /var/lib/mageddo:/var/lib/mageddo
     container_name: prod-postgres
     hostname: postgresql-server.prod
 
