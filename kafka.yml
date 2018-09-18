@@ -12,7 +12,7 @@ services:
     container_name: kafka
     network_mode: bridge
     hostname: kafka.dev
-    mem_limit: 1024m
+    mem_limit: 150m
     memswap_limit: 0
     volumes:
       - ./kafka/config/:/opt/kafka/config
@@ -29,8 +29,6 @@ services:
     extends: kafka-zookeeper
     container_name: stg-kafka
     hostname: stg-kafka-1.intranet
-    # depends_on:
-    #   - stg-kafka-2
     volumes:
       - /opt/databases/stg//kafka/logging:/opt/kafka/logs/
       - /opt/databases/stg/kafka/logs/:/tmp/kafka-logs
