@@ -1,7 +1,10 @@
 version: '2.2'
 services:
   stg-postgres:
-    image: postgres:10.3
+    image: defreitas/postgres:10.3
+    build:
+      context: .
+      dockerfile: postgres.Dockerfile
     environment:
       - TZ=UTC
       - POSTGRES_PASSWORD=root
@@ -41,8 +44,8 @@ services:
     volumes:
       - /opt/databases/stg/postgresql-ssl/10.3/data:/var/lib/postgresql/data
       - ./postgres/certs/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
-      - ./postgres/certs/server.key:/var/lib/postgresql/data/server.key
-      - ./postgres/certs/server.crt:/var/lib/postgresql/data/server.crt
+      # - ./postgres/certs/server.key:/var/lib/postgresql/data/server.key
+      # - ./postgres/certs/server.crt:/var/lib/postgresql/data/server.crt
     hostname: ssl-postgresql-server.docker
 
   stg-postgres-11:
