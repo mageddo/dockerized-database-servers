@@ -1,4 +1,4 @@
-FROM openjdk:10-jre
+FROM openjdk:8-jre
 
 RUN curl -L http://ftp.unicamp.br/pub/apache/kafka/1.0.0/kafka_2.12-1.0.0.tgz > /tmp/kafka.tgz && \
 	tar -xf /tmp/kafka.tgz -C /opt && ln -s /opt/kafka* /opt/kafka && rm -rf /tmp/kafka*

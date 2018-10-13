@@ -33,6 +33,8 @@ services:
       - /opt/databases/stg//kafka/logging:/opt/kafka/logs/
       - /opt/databases/stg/kafka/logs/:/tmp/kafka-logs
       - /opt/databases/stg/zookeeper/logs/:/tmp/zookeeper
+    environment:
+      - HOSTNAMES=kafka.intranet,zookeeper.intranet
 
   stg-kafka-2:
     extends: kafka-zookeeper
