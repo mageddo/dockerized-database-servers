@@ -10,7 +10,6 @@ services:
     hostname: mysql-server5.dev
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - HOSTNAMES=mg-mysql
     volumes:
       - /opt/databases/mysql5/data:/var/lib/mysql
       - ./mysql/5/conf.d:/etc/mysql/conf.d
