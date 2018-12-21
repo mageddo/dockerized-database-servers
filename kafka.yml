@@ -16,6 +16,7 @@ services:
     memswap_limit: 0
     volumes:
       - ./kafka/config/:/opt/kafka/config
+      - /etc/resolv.conf:/etc/resolv.conf
     healthcheck:
       test: [CMD, "echo", "0"]
       interval: 3s
