@@ -8,7 +8,7 @@ services:
     build: 
       context: .
       dockerfile: kafka.Dockerfile
-    image: defreitas/kafka:1.0.0
+    image: defreitas/kafka:2.1.0
     container_name: kafka
     network_mode: bridge
     hostname: kafka.dev
@@ -59,14 +59,22 @@ services:
       - /opt/databases/prod/zookeeper/logs/:/tmp/zookeeper
     hostname: kafka.prod
 
-  # kafka-manager:
-  #   image: sheepkiller/kafka-manager
-  #   ports:
-  #     - 9000:9000
-  #   environment:
-  #     - ZK_HOSTS=kafka.intranet:2181
-  #     - APPLICATION_SECRET=admin
-  #   hostname: kafka-manager.dev
-  #   mem_limit: 500m
-  #   memswap_limit: 0
-  #   network_mode: bridge
+  stg-kafka-1-0:
+    build: 
+      context: .
+      dockerfile: kafka_1_0_0.Dockerfile
+    image: defreitas/kafka:1.0.0
+    network_mode: bridge
+    mem_limit: 150m
+    memswap_limit: 0
+    volumes:
+      - ./kafka/config/:/opt/kafka/config
+      - /etc/resolv.conf:/etc/resolv.conf
+    environment:
+      - HOSTNAMES=kafka.intranet,zookeeper.intranet
+    volumes:
+      - /opt/databases/stg/kafka-1.0.0/logging:/opt/kafka/logs/
+      - /opt/databases/stg/kafka-1.0.0/logs/:/tmp/kafka-logs
+      - /opt/databases/stg/kafka-1.0.0/zookeeper/logs/:/tmp/zookeeper
+    environment:
+      - HOSTNAMES=kafka.intranet,zookeeper.intranet
