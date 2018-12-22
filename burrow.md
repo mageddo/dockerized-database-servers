@@ -3,6 +3,8 @@
 
 ### Specific group offsets
 
+The offsets records only will change if consumer commit messages, it means if you have no consumer then you will have no messages on the request below
+
 ```bash
 curl -s http://127.0.0.1:8000/v3/kafka/local/consumer/spring-kafka | jq .
 {
@@ -31,6 +33,48 @@ curl -s http://127.0.0.1:8000/v3/kafka/local/consumer/spring-kafka | jq .
   "request": {
     "url": "/v3/kafka/local/consumer/spring-kafka",
     "host": "typer-pc"
+  }
+}
+```
+
+#### Consmer group status
+At this API you will know if consumer-group have message lag, and when consumed the last message
+
+```bash
+curl -s http://burrow.docker:8000/v3/kafka/local/consumer/spring-kafka/status | jq .
+{
+  "error": false,
+  "message": "consumer status returned",
+  "status": {
+    "cluster": "local",
+    "group": "spring-kafka",
+    "status": "OK",
+    "complete": 1,
+    "partitions": [],
+    "partition_count": 1,
+    "maxlag": {
+      "topic": "COFFEE_REQUEST",
+      "partition": 0,
+      "owner": "",
+      "status": "OK",
+      "start": {
+        "offset": 8375,
+        "timestamp": 1545511085364,
+        "lag": 3991
+      },
+      "end": {
+        "offset": 12366,
+        "timestamp": 1545511260421,
+        "lag": 0
+      },
+      "current_lag": 2,
+      "complete": 1
+    },
+    "totallag": 2
+  },
+  "request": {
+    "url": "/v3/kafka/local/consumer/spring-kafka/status",
+    "host": "burrow.docker"
   }
 }
 ```
