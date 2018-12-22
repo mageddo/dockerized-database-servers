@@ -6,7 +6,7 @@
 The offsets records only will change if consumer commit messages, it means if you have no consumer then you will have no messages on the request below
 
 ```bash
-curl -s http://127.0.0.1:8000/v3/kafka/local/consumer/spring-kafka | jq .
+curl -s http://127.0.0.1/v3/kafka/local/consumer/spring-kafka | jq .
 {
   "error": false,
   "message": "consumer detail returned",
@@ -41,7 +41,7 @@ curl -s http://127.0.0.1:8000/v3/kafka/local/consumer/spring-kafka | jq .
 At this API you will know if consumer-group have message lag, and when consumed the last message
 
 ```bash
-curl -s http://burrow.docker:8000/v3/kafka/local/consumer/spring-kafka/status | jq .
+curl -s http://burrow.docker/v3/kafka/local/consumer/spring-kafka/status | jq .
 {
   "error": false,
   "message": "consumer status returned",

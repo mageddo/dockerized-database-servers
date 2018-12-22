@@ -5,7 +5,6 @@ pidfile="burrow.pid"
 servers=[ "kafka.intranet:2181" ]
 timeout=6
 root-path="/burrow"
-zookeeper-offsets=true
 
 [client-profile.test]
 client-id="burrow-test"
@@ -26,18 +25,8 @@ client-profile="test"
 group-blacklist="^(console-consumer-|python-kafka-consumer-|quick-).*$"
 group-whitelist=""
 
-[consumer.local_zk]
-class-name="kafka_zk"
-cluster="local"
-servers=[ "kafka.intranet:2181" ]
-zookeeper-path="/kafka-cluster"
-zookeeper-timeout=30
-group-blacklist="^(console-consumer-|python-kafka-consumer-|quick-).*$"
-group-whitelist=""
-zookeeper-offsets=true
-
 [httpserver.default]
-address=":8000"
+address=":80"
 
 [storage.default]
 class-name="inmemory"
