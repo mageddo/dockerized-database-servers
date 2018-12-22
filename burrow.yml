@@ -5,3 +5,4 @@ services:
     volumes:
       - ${PWD}/burrow:/etc/burrow/
     hostname: burrow.docker
+    network_mode: bridge
