@@ -1,0 +1,6 @@
+services: '3'
+  burrow:
+    image: defreitas/burrow:latest
+    volumes:
+      - ${PWD}/burrow:/etc/burrow/
+    hostname: burrow.docker
