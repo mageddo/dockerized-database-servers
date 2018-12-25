@@ -10,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=root
       - POSTGRES_DB=db
-      - HOSTNAMES=postgres
+      - HOSTNAMES=postgres,postgres-10.docker
     volumes:
       - /opt/databases/stg/postgresql/10.3/data:/var/lib/postgresql/data
       - /var/lib/mageddo:/var/lib/mageddo
@@ -20,6 +20,24 @@ services:
     mem_limit: 1024m
     memswap_limit: 0
     cpu_count: 1
+
+  stg-postgres-11:
+    image: defreitas/postgres:11.1
+    build:
+      context: .
+      dockerfile: postgres-11.Dockerfile
+    environment:
+      - TZ=UTC
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=db
+    volumes:
+      - /opt/databases/stg/postgresql/11.1/data:/var/lib/postgresql/data
+    hostname: postgres-11.docker
+    network_mode: bridge
+    mem_limit: 1024m
+    memswap_limit: 0
+    cpu_count: 2
 
   prod-postgres:
     image: postgres:10.3
