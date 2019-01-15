@@ -31,9 +31,9 @@ services:
     container_name: stg-kafka
     hostname: stg-kafka-1.intranet
     volumes:
-      - /opt/databases/stg//kafka/logging:/opt/kafka/logs/
+      - /opt/databases/stg/kafka/logging:/opt/kafka/logs/
       - /opt/databases/stg/kafka/logs/:/tmp/kafka-logs
-      - /opt/databases/stg/zookeeper/logs/:/tmp/zookeeper
+      - /opt/databases/stg/kafka/zookeper-logs/:/tmp/zookeeper
     environment:
       - HOSTNAMES=kafka.intranet,zookeeper.intranet
 
