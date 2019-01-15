@@ -31,9 +31,9 @@ services:
     container_name: stg-kafka
     hostname: stg-kafka-1.intranet
     volumes:
-      - /opt/databases/stg/kafka/logging:/opt/kafka/logs/
-      - /opt/databases/stg/kafka/logs/:/tmp/kafka-logs
-      - /opt/databases/stg/kafka/zookeper-logs/:/tmp/zookeeper
+      - /opt/databases/stg/kafka/0.11/logging:/opt/kafka/logs/
+      - /opt/databases/stg/kafka/0.11/logs/:/tmp/kafka-logs
+      - /opt/databases/stg/kafka/0.11/zookeper-logs/:/tmp/zookeeper
     environment:
       - HOSTNAMES=kafka.intranet,zookeeper.intranet
 
@@ -76,5 +76,21 @@ services:
       - /opt/databases/stg/kafka-1.0.0/logging:/opt/kafka/logs/
       - /opt/databases/stg/kafka-1.0.0/logs/:/tmp/kafka-logs
       - /opt/databases/stg/kafka-1.0.0/zookeeper/logs/:/tmp/zookeeper
-    environment:
-      - HOSTNAMES=kafka.intranet,zookeeper.intranet
+
+  stg-kafka-0-11-0:
+      build: 
+        context: .
+        dockerfile: kafka_0_11_0.Dockerfile
+      image: defreitas/kafka:0.11.0
+      #network_mode: bridge
+      mem_limit: 150m
+      memswap_limit: 0
+      volumes:
+        - ./kafka/config/:/opt/kafka/config
+        - /etc/resolv.conf:/etc/resolv.conf
+      volumes:
+        - /opt/databases/stg/kafka-0.11.0/logging:/opt/kafka/logs/
+        - /opt/databases/stg/kafka-0.11.0/logs/:/tmp/kafka-logs
+        - /opt/databases/stg/kafka-0.11.0/zookeeper/logs/:/tmp/zookeeper
+      environment:
+        - HOSTNAMES=kafka-0-11-0.intranet,zookeeper.intranet
