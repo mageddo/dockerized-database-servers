@@ -82,7 +82,7 @@ services:
         context: .
         dockerfile: kafka_0_11_0.Dockerfile
       image: defreitas/kafka:0.11.0
-      #network_mode: bridge
+      network_mode: bridge
       mem_limit: 150m
       memswap_limit: 0
       volumes:
