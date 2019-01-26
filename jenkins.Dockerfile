@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:lts
+FROM jenkins/jenkins:2.150.2
 USER root
 
 ENV TERM=xterm
