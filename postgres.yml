@@ -49,7 +49,7 @@ services:
     hostname: ssl-postgresql-server.docker
 
   stg-postgres-11:
-    image: defreitas/postgres:11.1
+    image: defreitas/postgres:11
     build:
       context: .
       dockerfile: postgres-11.Dockerfile
@@ -60,7 +60,7 @@ services:
       - POSTGRES_DB=db
       - HOSTNAMES=postgres-11.docker
     volumes:
-      - /data/databases/stg/postgresql/11.1/data:/var/lib/postgresql/data
+      - /data/databases/stg/postgresql/11/data:/var/lib/postgresql/data
     network_mode: bridge
     mem_limit: 1024m
     memswap_limit: 0
