@@ -13,7 +13,7 @@ RUN mkdir -p $TMP_DIR && curl -L https://download.docker.com/linux/static/stable
 	chmod +x /usr/bin/docker-compose
 
 # Installing portainer deployer
-RUN curl -L https://github.com/mageddo-projects/portainer-cli/releases/download/0.1.0/portainer-cli.zip > $TMP_DIR/portainer-cli.zip &&\
+RUN curl -L https://github.com/mageddo-projects/portainer-cli/releases/download/0.2.0/portainer-cli.zip > $TMP_DIR/portainer-cli.zip &&\
 	unzip $TMP_DIR/portainer-cli.zip -d / &&\
 	ln -s /portainer-cli/bin/portainer-cli /bin/portainer-cli &&\
 	rm -rf $TMP_DIR/
