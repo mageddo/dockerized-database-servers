@@ -16,5 +16,5 @@ ENV PORTAINER_CLI_VERSION=0.4.5
 # Installing portainer deployer
 RUN curl -L "https://github.com/mageddo-projects/portainer-cli/releases/download/${PORTAINER_CLI_VERSION}/portainer-cli-${PORTAINER_CLI_VERSION}.zip" > /tmp/portainer-cli.zip &&\
 	unzip /tmp/portainer-cli.zip -d / &&\
-	ln -s /portainer-cli/bin/portainer-cli /bin/portainer-cli &&\
+	ln -s /portainer-cli-*/bin/portainer-cli /bin/portainer-cli &&\
 	rm -rf /tmp/*
