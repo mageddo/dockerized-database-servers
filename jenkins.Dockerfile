@@ -12,7 +12,7 @@ RUN mkdir -p /tmp && curl -L https://download.docker.com/linux/static/stable/x86
 	chmod +x /usr/bin/docker-compose &&\
 	rm -rf /tmp/*
 
-ENV PORTAINER_CLI_VERSION=0.5.0
+ENV PORTAINER_CLI_VERSION=0.6.0
 # Installing portainer deployer
 RUN curl -L "https://github.com/mageddo-projects/portainer-cli/releases/download/${PORTAINER_CLI_VERSION}/portainer-cli-${PORTAINER_CLI_VERSION}.zip" > /tmp/portainer-cli.zip &&\
 	unzip /tmp/portainer-cli.zip -d / &&\

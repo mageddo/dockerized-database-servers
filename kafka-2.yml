@@ -1,0 +1,16 @@
+version: '3'
+services:
+  kafka:
+    build:
+      context: kafka-2
+      dockerfile: Dockerfile
+    volumes:
+      - /opt/databases/stg/kafka-2/data/:/tmp/kafka-logs
+      - /opt/databases/stg/kafka-2/zookeeper/data/:/tmp/zookeeper
+    networks:
+      - mageddo
+    environment:
+      - KAFKA_HEAP_OPTS=-Xmx700m -Xms200m
+networks:
+  mageddo:
+    external: true
