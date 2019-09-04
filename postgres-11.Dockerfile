@@ -1,4 +1,4 @@
-FROM postgres:11.2
+FROM postgres:11.5
 
 RUN echo deb http://ftp.us.debian.org/debian sid main > /etc/apt/sources.list.d/sid.list && \
 	apt-get update && \
