@@ -1,0 +1,8 @@
+version: '3'
+services:
+  zipkin-memory:
+    image: openzipkin/zipkin
+    hostname: zipkin.dev
+    ports: 
+      - 9411:9411
+      
