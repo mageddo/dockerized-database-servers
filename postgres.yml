@@ -61,6 +61,7 @@ services:
       - HOSTNAMES=postgres-11.docker
     volumes:
       - /data/databases/stg/postgresql/11/data:/var/lib/postgresql/data
+    restart: unless-stopped
     network_mode: bridge
     mem_limit: 1024m
     memswap_limit: 0
