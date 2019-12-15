@@ -5,8 +5,8 @@ services:
       context: kafka-2
       dockerfile: Dockerfile
     volumes:
-      - /opt/databases/stg/kafka-2/data/:/tmp/kafka-logs
-      - /opt/databases/stg/kafka-2/zookeeper/data/:/tmp/zookeeper
+      - /data/databases/stg/kafka-2/data/:/tmp/kafka-logs
+      - /data/databases/stg/kafka-2/zookeeper/data/:/tmp/zookeeper
     hostname: kafka.intranet
     network_mode: bridge
     environment:
