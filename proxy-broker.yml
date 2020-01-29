@@ -1,0 +1,12 @@
+version: '3'
+services:
+  proxybroker:
+    image: defreitas/proxybroker
+    build:
+      context: proxybroker
+      dockerfile: Dockerfile
+    #command: proxybroker serve --host 127.0.0.1 --port 8888 --types Socks4 --countries US
+    command: proxybroker find --types HTTP HTTPS --countries US --strict -l 10
+    #command: proxybroker serve --help
+    ports:
+      - 8888:8888
