@@ -1,11 +1,7 @@
-hello-world:
-  #image: java:openjdk-8u91 # deprecated
-  image: openjdk:8-jdk # ou openjdk:8-jre
-  hostname: "openjdk8.mageddo"
-  volumes:
-    - $PWD/build:/opt/spring
-  working_dir: /opt/spring/libs
-  command: java -Xmx8m -Xss256k -jar hello-world-1.0-SNAPSHOT.jar
-  mem_limit: 10m
-  memswap_limit: 0
-
+version: '3'
+services:
+  hello-world:
+    build:
+      context: ./java-program
+    environment:
+      - MY_ENV=some value
