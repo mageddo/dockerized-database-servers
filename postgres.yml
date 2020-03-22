@@ -1,6 +1,6 @@
 version: '2.2'
 services:
-  stg-postgres:
+  stg-postgres-10:
     image: defreitas/postgres:10.3
     build:
       context: .
