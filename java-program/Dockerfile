@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk
+FROM adoptopenjdk:11-jdk-hotspot
 
 WORKDIR /app
 COPY ./ /app
