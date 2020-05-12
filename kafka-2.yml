@@ -7,7 +7,9 @@ services:
     volumes:
       - /data/databases/stg/kafka-2/data/:/tmp/kafka-logs
       - /data/databases/stg/kafka-2/zookeeper/data/:/tmp/zookeeper
-    hostname: kafka.intranet
+    hostname: localhost
+    ports:
+      - 9092:9092
     network_mode: bridge
     environment:
       - KAFKA_HEAP_OPTS=-Xmx700m -Xms200m

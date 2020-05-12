@@ -61,6 +61,8 @@ services:
       - HOSTNAMES=postgres-11.docker
     volumes:
       - /data/databases/stg/postgresql/11/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
     restart: unless-stopped
     network_mode: bridge
     hostname: postgresql-server.dev
