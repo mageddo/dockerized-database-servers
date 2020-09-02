@@ -1,10 +1,1 @@
-version: '3'
-services:
-  wiremock:
-    image: gradle:6.6.1-jdk11
-    ports:
-      - 8282:8089
-    command: gradle run --no-daemon
-    volumes:
-      - ./wiremock-java:/app
-    working_dir: /app
+wiremock-java/docker-compose.yml

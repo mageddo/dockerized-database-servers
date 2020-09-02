@@ -11,7 +11,7 @@ public class WireMockMain {
   public static void main(String[] args) {
     final var wireMockServer = new WireMockServer(
         wireMockConfig()
-            .port(8089)
+            .port(8282)
     );
     List
         .of(

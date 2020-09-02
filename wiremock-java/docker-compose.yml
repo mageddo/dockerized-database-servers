@@ -1,0 +1,7 @@
+version: '3'
+services:
+  wiremock:
+    build:
+      context: ./wiremock-java
+      dockerfile: Dockerfile
+    network_mode: host

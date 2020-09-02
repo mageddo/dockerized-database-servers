@@ -1,15 +1,22 @@
 plugins {
-    id "java"
-    id "application"
+  id "java"
+  id "application"
+}
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_11
 }
 
 repositories {
-    jcenter()
+  jcenter()
 }
 
 dependencies {
-    implementation group: 'com.github.tomakehurst', name: 'wiremock', version: '2.27.1'
-    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.2'
+  implementation group: 'com.github.tomakehurst', name: 'wiremock', version: '2.27.1'
+  implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.2'
+}
 
+application {
+  mainClassName = "com.mageddo.wiremock.WireMockMain"
 }
