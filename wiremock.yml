@@ -1,8 +1,10 @@
 version: '3'
 services:
   wiremock:
-    image: rodolpheche/wiremock:2.27.1
+    image: gradle:6.6.1-jdk11
     ports:
-      - 7373:8080
+      - 8282:8089
+    command: gradle run --no-daemon
     volumes:
-      - ./wiremock/:/home/wiremock
+      - ./wiremock-java:/app
+    working_dir: /app
