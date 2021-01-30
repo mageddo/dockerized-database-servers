@@ -10,6 +10,7 @@ services:
     hostname: localhost
     ports:
       - 9092:9092
+      - 2181:2181
     network_mode: bridge
     environment:
       - KAFKA_HEAP_OPTS=-Xmx700m -Xms200m

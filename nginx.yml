@@ -12,4 +12,4 @@ services:
       - $PWD/nginx/certs/:/data/nginx/certs
       - $PWD/nginx/conf.d/:/etc/nginx/conf.d
     container_name: nginx
-    network_mode: bridge
+    network_mode: host
