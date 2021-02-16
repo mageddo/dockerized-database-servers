@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  nginx:
+    image: nginx:1.15
+    ports:
+      - mode: host
+        protocol: tcp
+        published: 80
+        target: 80
+      - mode: host
+        protocol: tcp
+        published: 443
+        target: 443
+      - 15800:15800
+    networks:
+      - mageddo
+    deploy:
+      mode: replicated
+      placement:
+        constraints:
+          - node.role == manager
+    volumes:
+      - $PWD/nginx/certs/:/data/nginx/certs
+      - $PWD/nginx/conf.d/:/etc/nginx/conf.d
+
+networks:
+  mageddo: 
+    external: true
