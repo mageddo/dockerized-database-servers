@@ -1,11 +1,27 @@
 version: '2.2'
 services:
 
+  postgres-13-ssd:
+    image: defreitas/postgres:13.2
+    build:
+      context: .
+      dockerfile: postgres-13.Dockerfile
+    environment:
+      - TZ=UTC
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=db
+    volumes:
+      - /tmp/postgres-13:/var/lib/postgresql/data
+    ports:
+       - 5436:5432
+    network_mode: bridge
+
   postgres-13:
     image: defreitas/postgres:13.2
     build:
       context: .
-      dockerfile: postgres.Dockerfile
+      dockerfile: postgres-13.Dockerfile
     environment:
       - TZ=UTC
       - POSTGRES_PASSWORD=root
