@@ -1,6 +1,13 @@
 # https://hub.docker.com/_/cassandra
 version: '2'
 services:
+
+  cassandra4:
+    image: cassandra:4.0
+    ports:
+      - 9042:9042
+    network_mode: bridge
+
   cassandra1:
     build: 
       context: .
