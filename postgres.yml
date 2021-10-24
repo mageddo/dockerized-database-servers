@@ -78,6 +78,8 @@ services:
     mem_limit: 1024m
     memswap_limit: 0
     cpu_count: 1
+    ports:
+      - 5432:5432
 
   prod-postgres:
     image: postgres:10.3
