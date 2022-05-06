@@ -1,0 +1,8 @@
+version: '3'
+services:  
+  gpsbabel:
+    image: gpsbabel
+    build:
+      context: .
+    volumes:
+      - ./:/opt

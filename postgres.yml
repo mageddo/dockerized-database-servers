@@ -80,6 +80,7 @@ services:
     cpu_count: 1
     ports:
       - 5432:5432
+    restart: unless-stopped
 
   prod-postgres:
     image: postgres:10.3
