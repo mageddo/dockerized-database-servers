@@ -1,1 +1,3 @@
 *.log
+gpsbabel/fit/*.*
+gpsbabel/gpx/*.*
