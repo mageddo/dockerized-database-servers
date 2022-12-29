@@ -22,5 +22,3 @@ RUN curl -L https://github.com/mageddo-projects/portainer-cli/releases/download/
 COPY ./jenkins/jdk-switcher.sh /usr/bin
 
 RUN apt-get update && apt-get install -y zip build-essential zlib1g-dev && curl -s "https://get.sdkman.io" | bash
-
-COPY jenkins/reg.mageddo.com.crt /etc/docker/certs.d/mageddo.com:5000/ca.crt
