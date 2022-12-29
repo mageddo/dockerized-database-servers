@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.179
+FROM jenkins/jenkins:2.235.2
 USER root
 
 ENV TERM=xterm
@@ -19,3 +19,6 @@ RUN curl -L https://github.com/mageddo-projects/portainer-cli/releases/download/
 	ln -s /portainer-cli-*/bin/portainer-cli /bin/portainer-cli &&\
 	rm -rf /tmp/*
 
+COPY ./jenkins/jdk-switcher.sh /usr/bin
+
+RUN apt-get update && apt-get install -y zip && curl -s "https://get.sdkman.io" | bash && bash -c "source /root/.sdkman/bin/sdkman-init.sh; source /usr/bin/jdk-switcher.sh; jdk-install '15.+amzn$';"
