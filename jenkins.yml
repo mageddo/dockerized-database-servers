@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: jenkins.Dockerfile
+    environment:
+      - PTN_CONFIG_DIR=/var/jenkins_home/
     ports:
       - 8080:8080
     volumes:
