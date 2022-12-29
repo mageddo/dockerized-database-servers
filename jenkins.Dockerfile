@@ -21,4 +21,4 @@ RUN curl -L https://github.com/mageddo-projects/portainer-cli/releases/download/
 
 COPY ./jenkins/jdk-switcher.sh /usr/bin
 
-RUN apt-get update && apt-get install -y zip && curl -s "https://get.sdkman.io" | bash && bash -c "source /root/.sdkman/bin/sdkman-init.sh; source /usr/bin/jdk-switcher.sh; jdk-install '15.+amzn$';"
+RUN apt-get update && apt-get install -y zip build-essential zlib1g-dev && curl -s "https://get.sdkman.io" | bash && bash -c "source /root/.sdkman/bin/sdkman-init.sh; source /usr/bin/jdk-switcher.sh; jdk-install '15.+amzn$';"
