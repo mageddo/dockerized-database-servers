@@ -22,3 +22,6 @@ RUN curl -L https://github.com/mageddo-projects/portainer-cli/releases/download/
 COPY ./jenkins/jdk-switcher.sh /usr/bin
 
 RUN apt-get update && apt-get install -y zip build-essential zlib1g-dev && curl -s "https://get.sdkman.io" | bash
+
+RUN groupadd docker && usermod -a -G docker jenkins && id
+USER jenkins
