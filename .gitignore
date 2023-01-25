@@ -1,3 +1,4 @@
 *.log
 gpsbabel/fit/*.*
 gpsbabel/gpx/*.*
+*.idea
