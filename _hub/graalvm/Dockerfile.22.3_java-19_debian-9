@@ -5,14 +5,13 @@ RUN mkdir /graalvm &&\
     apt-get update -y &&\
     apt-get install --force-yes -y build-essential libz-dev zlib1g-dev curl &&\
     apt-get clean &&\
-    rm -r /tmp/*
+    rm -r /tmp/* || true
 
 ENV GRAALVM_URL='https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.3.1/graalvm-ce-java19-linux-amd64-22.3.1.tar.gz'
-RUN curl -L $GRAALVM_URL > /graalvm/graalvm.tgz &&\
-    tar --strip 1 -zxvf /graalvm/graalvm.tgz -C /graalvm &&\
+RUN curl -L $GRAALVM_URL > /tmp/graalvm.tgz &&\
+    tar --strip 1 -zxvf /tmp/graalvm.tgz -C /graalvm &&\
     /graalvm/bin/gu install native-image &&\
-    rm -rv /graalvm/graalvm.tgz &&\
-    rm -r /tmp/*
+    rm -r /tmp/* || true
 
 ENV JAVA_HOME=/graalvm
 ENV PATH="${PATH}:$JAVA_HOME/bin"
