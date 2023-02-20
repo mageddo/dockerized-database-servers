@@ -1,7 +1,7 @@
 version: '3'
 services:
   22.3_java-19_debian-9:
-    image: defreitas/tools_graalvm-22.3_java-19_debian-9
+    image: defreitas/tools_graalvm-22.3_java-19_debian-9:0.1.0
     build:
       context: .
       dockerfile: "Dockerfile.22.3_java-19_debian-9"
