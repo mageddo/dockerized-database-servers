@@ -12,3 +12,4 @@ services:
     build:
       context: .
       dockerfile: "Dockerfile.22.3_java-17_debian-9_aarch64"
+    platform: linux/arm64/v8
