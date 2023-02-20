@@ -17,9 +17,9 @@ RUN curl -L https://download.docker.com/linux/static/stable/x86_64/docker-${DOCK
   chmod +x /usr/bin/github-cli &&\
   rm -rf /tmp/*
 
-ENV HUGO_0_91_URL=https://github.com/gohugoio/hugo/releases/download/v0.91.2/hugo_0.91.2_Linux-64bit.tar.gz
+ENV HUGO_0_91_URL="https://github.com/gohugoio/hugo/releases/download/v0.91.2/hugo_0.91.2_Linux-64bit.tar.gz"
 RUN mkdir /opt/hugo-0.91/ &&\
-    curl -s -L ${HUGO_0_91_URL} | tar -xz -C /opt/hugo-0.91/ \
+    curl -s -L ${HUGO_0_91_URL} | tar -xz -C /opt/hugo-0.91/ &&\
     ln -s /opt/hugo-0.91/hugo /bin/hugo
 
 VOLUME ["/var/run/docker.sock", "/var/run/docker.sock"]
