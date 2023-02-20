@@ -19,3 +19,4 @@ RUN mkdir -p /tmp && curl -L https://download.docker.com/linux/static/stable/x86
 
 VOLUME ["/var/run/docker.sock", "/var/run/docker.sock"]
 VOLUME ["/var/lib/docker", "/var/lib/docker"]
+LABEL GITHUB="https://github.com/mageddo/dockerized-database-servers/tree/newtools/_hub/generic-cd"
