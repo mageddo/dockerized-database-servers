@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-RUN apt-get update && apt-get install -y zip build-essential zlib1g-dev jq git curl wget && apt-get clean
+RUN apt-get update && apt-get install -y zip build-essential zlib1g-dev jq git curl wget rsync && apt-get clean
 
 ENV TERM=xterm
 ENV DOCKER_VERSION=20.10.14
