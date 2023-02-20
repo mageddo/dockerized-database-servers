@@ -3,4 +3,4 @@ services:
   build:
     build:
       context: .
-    image: tools-generic-cd:0.1.0
+    image: defreitas/tools-generic-cd:0.1.0
