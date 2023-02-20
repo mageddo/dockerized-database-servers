@@ -1,4 +1,4 @@
-FROM arm64v8/debian:10-slim AS BUILDER
+FROM arm64v8/debian:9-slim AS BUILDER
 
 RUN mkdir /graalvm &&\
     apt-get update -y &&\
