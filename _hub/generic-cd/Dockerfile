@@ -22,6 +22,8 @@ RUN mkdir /opt/hugo-0.91/ &&\
     curl -s -L ${HUGO_0_91_URL} | tar -xz -C /opt/hugo-0.91/ &&\
     ln -s /opt/hugo-0.91/hugo /bin/hugo
 
+RUN git config --global user.email trapzinho-bot@github.com
+
 VOLUME ["/var/run/docker.sock", "/var/run/docker.sock"]
 VOLUME ["/var/lib/docker", "/var/lib/docker"]
 LABEL GITHUB="https://github.com/mageddo/dockerized-database-servers/tree/newtools/_hub/generic-cd"
