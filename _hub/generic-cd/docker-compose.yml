@@ -1,0 +1,6 @@
+version: '3'
+services:
+  build:
+    build:
+      context: .
+    image: tools-generic-cd:0.1.0

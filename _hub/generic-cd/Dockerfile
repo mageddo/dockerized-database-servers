@@ -1,0 +1,20 @@
+FROM ubuntu:22.04
+
+ENV TERM=xterm
+ENV DOCKER_COMPOSE_VERSION=2.15.1
+ENV DOCKER_VERSION=20.10.14
+ENV DOCKER_BUILDKIT=1
+
+ENV GITHUB_CLI_URL='https://github.com/mageddo-projects/github-cli/releases/download/v1.8/github-cli.sh'
+RUN apt-get update && apt-get install -y zip build-essential zlib1g-dev jq hugo git curl wget &&\
+   groupadd docker && usermod -a -G docker root && id &&\
+   curl -s -L ${GITHUB_CLI_URL} > /usr/bin/github-cli &&\
+   chmod +x /usr/bin/github-cli
+
+RUN mkdir -p /tmp && curl -L https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz > /tmp/docker.tgz && \
+  tar -xf /tmp/docker.tgz --strip 1 -C /usr/local/bin && \
+  curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/bin/docker-compose && \
+  chmod +x /usr/bin/docker-compose &&\
+  rm -rf /tmp/*
+
+VOLUME ["/var/run/docker.sock", "/var/run/docker.sock"]
