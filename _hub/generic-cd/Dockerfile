@@ -18,3 +18,4 @@ RUN mkdir -p /tmp && curl -L https://download.docker.com/linux/static/stable/x86
   rm -rf /tmp/*
 
 VOLUME ["/var/run/docker.sock", "/var/run/docker.sock"]
+VOLUME ["/var/lib/docker", "/var/lib/docker"]
