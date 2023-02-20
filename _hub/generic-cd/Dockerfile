@@ -6,7 +6,7 @@ ENV TERM=xterm
 ENV DOCKER_VERSION=20.10.14
 ENV DOCKER_BUILDKIT=1
 ENV DOCKER_COMPOSE_VERSION=v2.15.1
-ENV GITHUB_CLI_URL='https://github.com/mageddo-projects/github-cli/releases/download/v1.8/github-cli.sh'
+ENV GITHUB_CLI_URL='https://github.com/mageddo-projects/github-cli/releases/download/v1.9/github-cli.sh'
 
 RUN curl -L https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz > /tmp/docker.tgz && \
   tar -xf /tmp/docker.tgz --strip 1 -C /usr/local/bin && \
