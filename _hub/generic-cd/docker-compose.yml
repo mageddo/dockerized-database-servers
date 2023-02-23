@@ -3,7 +3,7 @@ services:
   build:
     build:
       context: .
-    image: defreitas/tools-generic-cd:0.2.3
+    image: defreitas/tools-generic-cd:0.2.4
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/var/lib/docker:/var/lib/docker"
