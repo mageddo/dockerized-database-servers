@@ -1,20 +1,38 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
-cd bookmarks
-mkdir -p processed
+createNotes() {
+  echo "> $(date) creating notes"
+  for f in *.md; do \
+    
+    fname=$(basename $f)
+    echo "> processing: ${fname}"
+    
+    cat $fname | ../node_modules/.bin/hackmd-cli notes create
+    mv $f processed
 
-for f in *.md; do \
-  
-  fname=$(basename $f)
-  echo "> processing: ${fname}"
-  
-  cat $fname | ../node_modules/.bin/hackmd-cli notes create
-  mv $f processed
+    echo "> processed: ${fname}"
+    echo ""
 
-  echo "> processed: ${fname}"
-  echo ""
+  done
+}
 
-done
+case $1 in
 
+  create-notes )
+    createNotes
+  ;;
+
+  *)
+    date
+    cd bookmarks
+    mkdir -p processed
+
+    while [ true ]; do
+      ../batch-create.sh create-notes || echo "Failed, sleeping for 3 minutes"
+      sleep 180
+    done
+  ;;
+
+esac
