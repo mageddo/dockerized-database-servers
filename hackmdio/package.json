@@ -1,0 +1,8 @@
+{
+  "name": "hackmd-cli",
+  "version": "2.3.2",
+  "author": "Elvis",
+  "dependencies": {
+    "@hackmd/hackmd-cli": "2.3.2"
+  }
+}

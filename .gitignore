@@ -2,3 +2,4 @@
 gpsbabel/fit/*.*
 gpsbabel/gpx/*.*
 *.idea
+node_modules
