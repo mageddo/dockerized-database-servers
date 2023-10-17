@@ -31,7 +31,14 @@ case $1 in
 
     while [ true ]; do
       ../batch-create.sh create-notes || echo "Failed, sleeping for 3 minutes"
-      sleep 180
+      
+      sleep 60
+      echo "> 1 min"
+      sleep 60
+      echo "> 2 min"
+      sleep 60
+      echo "> 3 min, trying again"
+
     done
   ;;
 
