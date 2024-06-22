@@ -1,5 +1,4 @@
-# GLIB 2.24
-FROM debian:9-slim AS BUILDER
+FROM arm64v8/debian:9-slim AS BUILDER
 
 RUN mkdir /graalvm &&\
     apt-get update -y &&\
@@ -7,10 +6,9 @@ RUN mkdir /graalvm &&\
     apt-get clean &&\
     rm -r /tmp/* || true
 
-ENV GRAALVM_URL='https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.3.1/graalvm-ce-java19-linux-amd64-22.3.1.tar.gz'
+ENV GRAALVM_URL='https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-21.0.2/graalvm-community-jdk-21.0.2_linux-aarch64_bin.tar.gz'
 RUN curl -L $GRAALVM_URL > /tmp/graalvm.tgz &&\
     tar --strip 1 -zxvf /tmp/graalvm.tgz -C /graalvm &&\
-    /graalvm/bin/gu install native-image &&\
     rm -r /tmp/* || true
 
 ENV JAVA_HOME=/graalvm

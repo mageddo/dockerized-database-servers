@@ -4,3 +4,4 @@ gpsbabel/gpx/*.*
 *.idea
 node_modules
 bookmarks
+.DS_Store

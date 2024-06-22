@@ -1,15 +1,15 @@
 version: '3'
 services:
 
-  22.3_java-19_debian-9:
-    image: defreitas/tools_graalvm-22.3_java-19_debian-9:0.1.2
+  debian-9:
+    image: defreitas/tools_graalvm-21_debian-9:0.0.2
     build:
       context: .
-      dockerfile: "Dockerfile.22.3_java-19_debian-9"
+      dockerfile: "Dockerfile.debian-9"
 
-  22.3_java-19_debian-9-aarch64:
-    image: defreitas/tools_graalvm-22.3_java-19_debian-9_aarch64:0.1.3
+  debian-9-aarch64:
+    image: defreitas/tools_graalvm-21_debian-9_aarch64:0.0.2
     build:
       context: .
-      dockerfile: "Dockerfile.22.3_java-19_debian-9_aarch64"
+      dockerfile: "Dockerfile.debian-9_aarch64"
     platform: linux/arm64/v8
