@@ -8,6 +8,8 @@ services:
       - "zookeeper_data:/bitnami"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+    tmpfs: "/datalog"
+
   kafka:
     image: docker.io/bitnami/kafka:3.3
     ports:
