@@ -2,7 +2,9 @@ version: '3'
 services: 
   burrow:
     image: defreitas/burrow:latest
-    volumes:
-      - ${PWD}/burrow:/etc/burrow/
-    hostname: burrow.docker
+    environment:
+      - GOMAXPROCS=1
+    build: 
+      context: .
+      dockerfile: burrow.Dockerfile
     network_mode: bridge

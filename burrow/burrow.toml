@@ -1,36 +1,37 @@
 [general]
 pidfile="burrow.pid"
+stdout-logfile=""
+access-control-allow-origin="*"
 
-[zookeeper]
-servers=[ "kafka.intranet:2181" ]
-timeout=6
-root-path="/burrow"
+[logging]
+filename=""
+level="debug"
 
 [client-profile.test]
 client-id="burrow-test"
-kafka-version="2.1.0"
+kafka-version="0.8"
 
 [cluster.local]
 class-name="kafka"
-servers=[ "kafka.intranet:9092" ]
+servers=[ "localhost:9092" ]
 client-profile="test"
-topic-refresh=120
-offset-refresh=30
+topic-refresh="120"
+offset-refresh="30"
 
 [consumer.local]
 class-name="kafka"
 cluster="local"
-servers=[ "kafka.intranet:9092" ]
+servers=[ "localhost:9092" ]
 client-profile="test"
-group-blacklist="^(console-consumer-|python-kafka-consumer-|quick-).*$"
-group-whitelist=""
+group-denylist="^(console-consumer-|python-kafka-consumer-|quick-).*$"
+group-alowlist=""
 
 [httpserver.default]
 address=":80"
 
 [storage.default]
 class-name="inmemory"
-workers=20
-intervals=15
-expire-group=604800
-min-distance=1
+workers="20"
+intervals="15"
+expire-group="604800"
+min-distance="1"
