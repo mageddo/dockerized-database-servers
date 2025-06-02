@@ -9,7 +9,8 @@ level="debug"
 
 [client-profile.test]
 client-id="burrow-test"
-kafka-version="0.8"
+kafka-version="3.7.2"
+
 
 [cluster.local]
 class-name="kafka"
@@ -27,7 +28,7 @@ group-denylist="^(console-consumer-|python-kafka-consumer-|quick-).*$"
 group-alowlist=""
 
 [httpserver.default]
-address=":80"
+address=":8000"
 
 [storage.default]
 class-name="inmemory"

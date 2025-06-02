@@ -7,4 +7,5 @@ services:
     build: 
       context: .
       dockerfile: burrow.Dockerfile
-    network_mode: bridge
+    network_mode: host
+    restart: unless-stopped

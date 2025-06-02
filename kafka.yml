@@ -18,4 +18,4 @@ services:
     ports:
       - "9092:9092"
       - "9093:9093"
-    network_mode: bridge
+    restart: unless-stopped
