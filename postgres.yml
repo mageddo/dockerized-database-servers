@@ -23,7 +23,20 @@ services:
     cpu_count: 1
     ports:
       - 5432:5432
-    restart: unless-stopped
+
+  stg-postgres-10-restore:
+    image: postgres:10.3
+    environment:
+      - TZ=UTC
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=db
+    volumes:
+      - /data2/volta-pg-2020-04-27/full/data/:/var/lib/postgresql/data
+    network_mode: bridge
+    mem_limit: 1024m
+    ports:
+      - 5439:5432
 
   # url de conexao jdbc:postgresql://postgresql-server.dev:5432/root
   stg-postgres-11:
@@ -49,7 +62,10 @@ services:
     cpu_count: 2
 
   stg-postgres-17:
-    image: postgres:17.6
+    image: defreitas/postgres:17.6
+    build:
+      context: postgres/17
+      dockerfile: postgres.Dockerfile
     environment:
       - TZ=UTC
       - POSTGRES_PASSWORD=root
@@ -65,13 +81,3 @@ services:
     mem_limit: 1024m
     memswap_limit: 0
     cpu_count: 2
-    command:
-      - postgres
-      - -c
-      - wal_level=logical
-      - -c
-      - max_wal_senders=10
-      - -c
-      - max_replication_slots=10
-      - -c
-      - wal_keep_size=64MB
