@@ -2,7 +2,7 @@ FROM postgres:17.6
 
 COPY debian.sources /etc/apt/sources.list.d/debian.sources
 
-RUN apt-get update \
+RUN apt-get -o Acquire::Check-Valid-Until=false update \
   && apt-get install -y \
        postgresql-17-cron \
        postgresql-17-partman \
