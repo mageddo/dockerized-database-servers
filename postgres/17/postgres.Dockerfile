@@ -10,9 +10,10 @@ RUN apt-get -o Acquire::Check-Valid-Until=false update \
 
 CMD [ \
   "postgres", \
-   "-c", "wal_level=logical", \
-   "-c", "max_wal_senders=10", \
-   "-c", "max_replication_slots=10", \
-   "-c", "wal_keep_size=64MB", \
-   "-c", "shared_preload_libraries=pg_partman_bgw,pg_cron" \
+  "-c", "wal_level=logical", \
+  "-c", "max_wal_senders=10", \
+  "-c", "max_replication_slots=10", \
+  "-c", "wal_keep_size=64MB", \
+  "-c", "shared_preload_libraries=pg_partman_bgw,pg_cron", \
+  "-c", "cron.database_name=db" \
 ]
