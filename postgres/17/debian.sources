@@ -1,5 +1,4 @@
 Types: deb
-
 URIs: http://snapshot.debian.org/archive/debian/20251103T204410Z
 Suites: trixie trixie-updates
 Components: main
