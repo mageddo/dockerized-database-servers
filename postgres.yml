@@ -81,3 +81,25 @@ services:
     mem_limit: 1024m
     memswap_limit: 0
     cpu_count: 2
+
+  # mesmas versoes de plugins que a digital ocean
+  stg-postgres-do:
+    image: defreitas/postgres:do
+    build:
+      context: postgres/do
+      dockerfile: postgres.Dockerfile
+    environment:
+      - TZ=UTC
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=db
+      - HOSTNAMES=postgres-17.docker
+    volumes:
+      - /data/databases/stg/postgresql/do/data:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
+    restart: unless-stopped
+    network_mode: bridge
+    mem_limit: 1024m
+    memswap_limit: 0
+    cpu_count: 2
