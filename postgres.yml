@@ -82,6 +82,23 @@ services:
     memswap_limit: 0
     cpu_count: 2
 
+  stg-postgres-17-volume:
+    image: postgres:17.6
+    environment:
+      - TZ=UTC
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=db
+    volumes:
+      - stg_postgres_17:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+    network_mode: bridge
+    mem_limit: 1024m
+    memswap_limit: 0
+    cpu_count: 2
+
   # mesmas versoes de plugins que a digital ocean
   stg-postgres-do:
     image: defreitas/postgres:do
@@ -103,3 +120,19 @@ services:
     mem_limit: 1024m
     memswap_limit: 0
     cpu_count: 2
+
+  postgres-mcp:
+    image: crystaldba/postgres-mcp:0.3.0
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URI: postgresql://app:app@postgres:5432/app
+    ports:
+      - "8007:8000"
+    command:
+      - --access-mode=unrestricted
+      - --transport=sse
+
+volumes:
+  stg_postgres_17:
